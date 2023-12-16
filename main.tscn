@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgilij1spcg0e"]
+[gd_scene load_steps=6 format=3 uid="uid://cgilij1spcg0e"]
 
 [ext_resource type="Texture2D" uid="uid://xgj7wcyd3dws" path="res://art/Grass A.png" id="1_o22jy"]
 [ext_resource type="PackedScene" uid="uid://32hr6va7e6bs" path="res://scenes/player.tscn" id="2_ggelv"]
+[ext_resource type="PackedScene" uid="uid://m761x44fae1r" path="res://scenes/fake_obstacle.tscn" id="3_hdoux"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1aa6c"]
 texture = ExtResource("1_o22jy")
@@ -34,6 +35,7 @@ texture = ExtResource("1_o22jy")
 sources/0 = SubResource("TileSetAtlasSource_1aa6c")
 
 [node name="root" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hdemj")
@@ -42,3 +44,15 @@ layer_0/tile_data = PackedInt32Array(0, 655360, 1, 65536, 0, 0, 131072, 0, 0, 19
 
 [node name="Player" parent="." instance=ExtResource("2_ggelv")]
 position = Vector2(106, 85)
+
+[node name="Node2D" parent="." instance=ExtResource("3_hdoux")]
+position = Vector2(47, 67)
+
+[node name="Node2D2" parent="." instance=ExtResource("3_hdoux")]
+position = Vector2(78, 116)
+
+[node name="Node2D4" parent="." instance=ExtResource("3_hdoux")]
+position = Vector2(134, 59)
+
+[node name="Node2D3" parent="." instance=ExtResource("3_hdoux")]
+position = Vector2(150, 104)
