@@ -31,7 +31,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
-	if event.is_action_pressed("action"):
-		for area in $Area2D.get_overlapping_areas():
-			if area.has_method("interact"):
-				area.interact()
+	if States.current_state == States.STATE.PLAYING:
+		if event.is_action_pressed("action"):
+			for area in $Area2D.get_overlapping_areas():
+				if area.has_method("interact"):
+					area.interact()
