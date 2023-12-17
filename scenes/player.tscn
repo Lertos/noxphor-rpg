@@ -42,6 +42,3 @@ offset_bottom = -90.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_gyq8l")
-
-[connection signal="area_entered" from="Area2D" to="." method="on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="on_area_exited"]

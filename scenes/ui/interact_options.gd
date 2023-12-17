@@ -3,6 +3,10 @@ extends NinePatchRect
 var options = []
 
 func show_options(given_options: Array):
+	#Make sure we set the state
+	States.current_state = States.STATE.IN_MENU
+	States.current_state_data = "interact_options"
+	
 	for option in given_options:
 		var new_label = RichTextLabel.new()
 		

@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 const SPEED: float = 100.0
 
-var is_talking: bool = false
-var colliding_areas = []
-
 func _physics_process(delta):
+	if States.current_state != States.STATE.PLAYING:
+		return
+	
 	var input_vector = Vector2.ZERO
 	
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -35,9 +35,3 @@ func _input(event):
 		for area in $Area2D.get_overlapping_areas():
 			if area.has_method("interact"):
 				area.interact()
-
-func on_area_entered(area):
-	colliding_areas.append(area)
-
-func on_area_exited(area):
-	colliding_areas.erase(area)
