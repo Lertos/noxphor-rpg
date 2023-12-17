@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgilij1spcg0e"]
+[gd_scene load_steps=24 format=3 uid="uid://cgilij1spcg0e"]
 
 [ext_resource type="Texture2D" uid="uid://xgj7wcyd3dws" path="res://art/tilesets/Grass A.png" id="1_o22jy"]
+[ext_resource type="Script" path="res://main.gd" id="1_uq32w"]
 [ext_resource type="PackedScene" uid="uid://32hr6va7e6bs" path="res://scenes/player.tscn" id="2_ggelv"]
 [ext_resource type="Texture2D" uid="uid://bhao6skqun5th" path="res://art/tilesets/Sand A.png" id="2_tb5g5"]
 [ext_resource type="Texture2D" uid="uid://cipuainou2fpg" path="res://art/tilesets/Tiles A.png" id="3_jan1y"]
@@ -386,6 +387,7 @@ sources/4 = SubResource("TileSetAtlasSource_dfnu7")
 
 [node name="root" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_uq32w")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hdemj")
