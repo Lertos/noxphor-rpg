@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs0ds2f1knha0"
-path="res://.godot/imported/UI Pointer A.png-10c9251983eedd60c58a76e3af763bde.ctex"
+uid="uid://dsk6spqm6xwnk"
+path="res://.godot/imported/Treasure Chest.png-43f490a13e9c9c5703e7db0e6f3b74f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/UI Pointer A.png"
-dest_files=["res://.godot/imported/UI Pointer A.png-10c9251983eedd60c58a76e3af763bde.ctex"]
+source_file="res://art/Treasure Chest.png"
+dest_files=["res://.godot/imported/Treasure Chest.png-43f490a13e9c9c5703e7db0e6f3b74f5.ctex"]
 
 [params]
 
