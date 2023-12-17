@@ -1,17 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgilij1spcg0e"]
+[gd_scene load_steps=21 format=3 uid="uid://cgilij1spcg0e"]
 
-[ext_resource type="Texture2D" uid="uid://xgj7wcyd3dws" path="res://art/Tilesets/Grass A.png" id="1_o22jy"]
+[ext_resource type="Texture2D" uid="uid://xgj7wcyd3dws" path="res://art/tilesets/Grass A.png" id="1_o22jy"]
 [ext_resource type="PackedScene" uid="uid://32hr6va7e6bs" path="res://scenes/player.tscn" id="2_ggelv"]
-[ext_resource type="Texture2D" uid="uid://bhao6skqun5th" path="res://art/Tilesets/Sand A.png" id="2_tb5g5"]
-[ext_resource type="PackedScene" uid="uid://m761x44fae1r" path="res://scenes/fake_obstacle.tscn" id="3_hdoux"]
-[ext_resource type="Texture2D" uid="uid://cipuainou2fpg" path="res://art/Tilesets/Tiles A.png" id="3_jan1y"]
-[ext_resource type="Texture2D" uid="uid://cl5dh7shlg3hw" path="res://art/Tilesets/Wood A.png" id="4_imooc"]
-[ext_resource type="Texture2D" uid="uid://bds2kv7vsd553" path="res://art/Tilesets/Tree.png" id="5_a8cil"]
-[ext_resource type="Texture2D" uid="uid://cgwlhiakwr08a" path="res://art/Tilesets/Water A.png" id="5_fqy8m"]
-[ext_resource type="Texture2D" uid="uid://cei2jlyoxy5w5" path="res://art/Tilesets/Walls A 1.png" id="6_nvgxw"]
-[ext_resource type="Texture2D" uid="uid://c78ddkqfhktqv" path="res://art/Player/Player Shadow.png" id="7_6sutr"]
-[ext_resource type="Texture2D" uid="uid://gqbktlluk7i" path="res://art/Tilesets/Walls A 2.png" id="7_t5d0n"]
-[ext_resource type="Texture2D" uid="uid://b54xdlqrd8uqq" path="res://art/Tilesets/Walls A 3.png" id="8_c0joa"]
+[ext_resource type="Texture2D" uid="uid://bhao6skqun5th" path="res://art/tilesets/Sand A.png" id="2_tb5g5"]
+[ext_resource type="Texture2D" uid="uid://cipuainou2fpg" path="res://art/tilesets/Tiles A.png" id="3_jan1y"]
+[ext_resource type="Texture2D" uid="uid://cl5dh7shlg3hw" path="res://art/tilesets/Wood A.png" id="4_imooc"]
+[ext_resource type="Texture2D" uid="uid://bds2kv7vsd553" path="res://art/tilesets/Tree.png" id="5_a8cil"]
+[ext_resource type="Texture2D" uid="uid://cgwlhiakwr08a" path="res://art/tilesets/Water A.png" id="5_fqy8m"]
+[ext_resource type="Texture2D" uid="uid://cei2jlyoxy5w5" path="res://art/tilesets/Walls A 1.png" id="6_nvgxw"]
+[ext_resource type="Texture2D" uid="uid://gqbktlluk7i" path="res://art/tilesets/Walls A 2.png" id="7_t5d0n"]
+[ext_resource type="Texture2D" uid="uid://b54xdlqrd8uqq" path="res://art/tilesets/Walls A 3.png" id="8_c0joa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1aa6c"]
 texture = ExtResource("1_o22jy")
@@ -395,19 +393,3 @@ layer_1/tile_data = PackedInt32Array(851973, 65543, 0, 851972, 65543, 0, 851975,
 
 [node name="Player" parent="." instance=ExtResource("2_ggelv")]
 position = Vector2(106, 85)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player"]
-show_behind_parent = true
-texture = ExtResource("7_6sutr")
-
-[node name="Node2D" parent="." instance=ExtResource("3_hdoux")]
-position = Vector2(47, 67)
-
-[node name="Node2D2" parent="." instance=ExtResource("3_hdoux")]
-position = Vector2(78, 116)
-
-[node name="Node2D4" parent="." instance=ExtResource("3_hdoux")]
-position = Vector2(134, 59)
-
-[node name="Node2D3" parent="." instance=ExtResource("3_hdoux")]
-position = Vector2(150, 104)

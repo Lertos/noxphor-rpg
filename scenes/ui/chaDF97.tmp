@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8vb0pcrgq3lw"]
+
+[ext_resource type="Script" path="res://scenes/ui/chat_window.gd" id="1_grhjx"]
+[ext_resource type="Texture2D" uid="uid://36552og31g41" path="res://art/UI/UI Window B.png" id="1_ks4rq"]
+[ext_resource type="FontFile" uid="uid://dsl735x454btx" path="res://dogicapixel.ttf" id="2_fyb6n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l661g"]
+font = ExtResource("2_fyb6n")
+font_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="ChatWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grhjx")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 125.0
+offset_right = 169.0
+offset_bottom = 177.0
+texture = ExtResource("1_ks4rq")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hello there adventurer! What do we have here? A silly goose? Shall we smite thee with fire?"
+label_settings = SubResource("LabelSettings_l661g")
+autowrap_mode = 3

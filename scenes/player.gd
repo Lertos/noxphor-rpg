@@ -15,13 +15,13 @@ func _physics_process(delta):
 		
 		#Very naive approach; should be replaced by a AnimTree once you have walk anims
 		if velocity.x > 0:
-			$Sprite2D.frame = 2
+			$Main.frame = 2
 		elif velocity.x < 0:
-			$Sprite2D.frame = 1
+			$Main.frame = 1
 		elif velocity.y > 0:
-			$Sprite2D.frame = 0
+			$Main.frame = 0
 		elif velocity.y < 0:
-			$Sprite2D.frame = 3
+			$Main.frame = 3
 	else:
 		velocity = input_vector
 		

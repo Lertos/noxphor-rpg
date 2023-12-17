@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d4mq7hy6287jn"]
+
+[ext_resource type="FontFile" uid="uid://c6330obf6tkj4" path="res://5₧5.ttf" id="1_pbopc"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_pbopc")
+font_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
