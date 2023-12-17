@@ -20,3 +20,9 @@ func update_sizing():
 	#Resize the ninepatch to fit the options
 	self.size.x = $MarginContainer.size.x
 	self.size.y = $MarginContainer.size.y
+	
+	#Always put it in the middle, vertically, of the source's position
+	self.position.y -= self.size.y / 2
+	
+	#Always put it a bit to the right
+	self.position.x += 7
