@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://mtedcynjbvkp"]
+
+[ext_resource type="Script" path="res://scenes/objects/character.gd" id="1_sg2bm"]
+[ext_resource type="Resource" uid="uid://byq0nbjtvqhrr" path="res://scenes/objects/custom_res/characters/lisa_burch.tres" id="2_nhyev"]
+[ext_resource type="Texture2D" uid="uid://bq73a2yc6ma3w" path="res://art/player/wizard2.png" id="3_w76t2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6q53c"]
+radius = 14.0357
+
+[node name="Character" type="Area2D"]
+script = ExtResource("1_sg2bm")
+resource = ExtResource("2_nhyev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6q53c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_w76t2")

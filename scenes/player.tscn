@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://32hr6va7e6bs"]
+[gd_scene load_steps=8 format=3 uid="uid://32hr6va7e6bs"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_0x0to"]
 [ext_resource type="Texture2D" uid="uid://dm5j2ccgtlja0" path="res://art/player/Player.png" id="1_erh0l"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7tba"]
 size = Vector2(10, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyq8l"]
+radius = 14.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_0x0to")
@@ -34,3 +37,11 @@ offset_left = -161.0
 offset_top = -90.0
 offset_right = -161.0
 offset_bottom = -90.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gyq8l")
+
+[connection signal="area_entered" from="Area2D" to="." method="on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="on_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cgilij1spcg0e"]
+[gd_scene load_steps=23 format=3 uid="uid://cgilij1spcg0e"]
 
 [ext_resource type="Texture2D" uid="uid://xgj7wcyd3dws" path="res://art/tilesets/Grass A.png" id="1_o22jy"]
 [ext_resource type="PackedScene" uid="uid://32hr6va7e6bs" path="res://scenes/player.tscn" id="2_ggelv"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cei2jlyoxy5w5" path="res://art/tilesets/Walls A 1.png" id="6_nvgxw"]
 [ext_resource type="Texture2D" uid="uid://gqbktlluk7i" path="res://art/tilesets/Walls A 2.png" id="7_t5d0n"]
 [ext_resource type="Texture2D" uid="uid://b54xdlqrd8uqq" path="res://art/tilesets/Walls A 3.png" id="8_c0joa"]
+[ext_resource type="PackedScene" uid="uid://c7yrp0h14wmde" path="res://scenes/objects/characters/fred_turner.tscn" id="11_qcvxa"]
+[ext_resource type="PackedScene" uid="uid://mtedcynjbvkp" path="res://scenes/objects/characters/lisa_burch.tscn" id="12_rdu1a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1aa6c"]
 texture = ExtResource("1_o22jy")
@@ -393,3 +395,9 @@ layer_1/tile_data = PackedInt32Array(851973, 65543, 0, 851972, 65543, 0, 851975,
 
 [node name="Player" parent="." instance=ExtResource("2_ggelv")]
 position = Vector2(106, 85)
+
+[node name="Character" parent="." instance=ExtResource("11_qcvxa")]
+position = Vector2(186, 76)
+
+[node name="Character2" parent="." instance=ExtResource("12_rdu1a")]
+position = Vector2(59, 15)

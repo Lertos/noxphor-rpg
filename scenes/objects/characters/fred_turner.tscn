@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7yrp0h14wmde"]
+
+[ext_resource type="Script" path="res://scenes/objects/character.gd" id="1_8cpw6"]
+[ext_resource type="Texture2D" uid="uid://bv0q40kl47f56" path="res://art/player/wizard.png" id="2_2q5wh"]
+[ext_resource type="Resource" uid="uid://v7wg2gd7wq6o" path="res://scenes/objects/custom_res/characters/fred_turner.tres" id="2_yw4rt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6q53c"]
+radius = 14.0357
+
+[node name="Character" type="Area2D"]
+script = ExtResource("1_8cpw6")
+resource = ExtResource("2_yw4rt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6q53c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2q5wh")
