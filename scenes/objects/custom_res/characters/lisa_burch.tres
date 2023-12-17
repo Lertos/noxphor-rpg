@@ -6,4 +6,5 @@
 script = ExtResource("1_iuts7")
 name = "Lisa Burch"
 id = "lisa_burch"
-options = 22
+level = 14
+interact_options = Array[int]([1, 4])

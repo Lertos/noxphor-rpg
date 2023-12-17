@@ -4,5 +4,6 @@ extends Node2D
 
 func interact():
 	print(resource.name)
-	print(resource.options)
 	
+	for option in resource.interact_options:
+		print(Enums.CHARACTER_INTERACT_OPTIONS.keys()[option])
