@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://msuvt7e3vt1h"
-path="res://.godot/imported/Rock Wall A (Entrance).png-3ff2bf5ca92d9fff1a80aabd50b3199c.ctex"
+path="res://.godot/imported/Rock Wall A (Entrance).png-d49e915164809491b4414b0f203d2957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Tilesets/Rock Wall A (Entrance).png"
-dest_files=["res://.godot/imported/Rock Wall A (Entrance).png-3ff2bf5ca92d9fff1a80aabd50b3199c.ctex"]
+source_file="res://art/tilesets/Rock Wall A (Entrance).png"
+dest_files=["res://.godot/imported/Rock Wall A (Entrance).png-d49e915164809491b4414b0f203d2957.ctex"]
 
 [params]
 
