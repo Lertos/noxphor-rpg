@@ -8,8 +8,7 @@ var current_option
 
 func show_options(given_options: Array):
 	#Make sure we set the state
-	States.current_state = States.STATE.IN_MENU
-	States.current_state_data = "interact_options"
+	States.change_state(States.STATE.IN_MENU, "interact_options")
 	
 	options = given_options
 	
@@ -54,7 +53,7 @@ func change_selected_option(new_index: int):
 	label.text = PREFIX_COLOR + label.text + SUFFIX_COLOR
 
 func _input(event):
-	if States.current_state == States.STATE.IN_MENU and States.current_state_data == "interact_options":
+	if States.is_state(States.STATE.IN_MENU) and States.is_data("interact_options"):
 		if event.is_action_pressed("down"):
 			if current_option == len(options) - 1:
 				change_selected_option(0)
@@ -66,4 +65,4 @@ func _input(event):
 			else:
 				change_selected_option(current_option - 1)
 		elif event.is_action_pressed("action"):
-			get_tree().get_root().get_node("root").handle_event(self.name, options[current_option])
+			get_tree().get_root().get_node("root").handle_popup_event(self.name, options[current_option])

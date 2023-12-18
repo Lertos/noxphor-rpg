@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED: float = 100.0
 
 func _physics_process(delta):
-	if States.current_state != States.STATE.PLAYING:
+	if not States.is_state(States.STATE.PLAYING):
 		return
 	
 	var input_vector = Vector2.ZERO
@@ -31,8 +31,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
-	if States.current_state == States.STATE.PLAYING:
-		if event.is_action_pressed("action"):
-			for area in $Area2D.get_overlapping_areas():
-				if area.has_method("interact"):
-					area.interact()
+	if not States.is_state(States.STATE.PLAYING):
+		return
+		
+	if event.is_action_pressed("action"):
+		for area in $Area2D.get_overlapping_areas():
+			if area.has_method("interact"):
+				area.interact()
