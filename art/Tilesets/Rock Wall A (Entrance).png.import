@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq73a2yc6ma3w"
-path="res://.godot/imported/wizard2.png-6f10f5e79457440a0df589c0d4903c8d.ctex"
+uid="uid://msuvt7e3vt1h"
+path="res://.godot/imported/Rock Wall A (Entrance).png-3ff2bf5ca92d9fff1a80aabd50b3199c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Player/wizard2.png"
-dest_files=["res://.godot/imported/wizard2.png-6f10f5e79457440a0df589c0d4903c8d.ctex"]
+source_file="res://art/Tilesets/Rock Wall A (Entrance).png"
+dest_files=["res://.godot/imported/Rock Wall A (Entrance).png-3ff2bf5ca92d9fff1a80aabd50b3199c.ctex"]
 
 [params]
 
