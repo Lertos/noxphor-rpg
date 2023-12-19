@@ -5,15 +5,15 @@ const DESIRED_WIDTH: float = 0.7 #0.2 = 20%
 const DESIRED_HEIGHT: float = 0.3 #0.2 = 20%
 
 func _ready() -> void:
-	#Need to get the camera's rect from the camera position and the viewport size
-	var half_size = get_viewport_rect().size * 0.5
-	var camera_rect = Rect2(position - half_size, position + half_size)
+	#This is magic found from this lovely individual, fixed up to match Godot 4 docs
+	#https://www.reddit.com/r/godot/comments/rzmfh3/comment/hrwd6mz/?utm_source=share&utm_medium=web2x&context=3
+	var camera_rect = get_canvas_transform().affine_inverse().basis_xform(get_viewport_rect().size)
 	
 	#Note the chat window is anchored top-left and is currently at 0,0
-	var width = camera_rect.size.x * DESIRED_WIDTH
-	var height = camera_rect.size.y * DESIRED_HEIGHT
+	var width = camera_rect.x * DESIRED_WIDTH
+	var height = camera_rect.y * DESIRED_HEIGHT
 	
-	var x_pos = (camera_rect.size.x - width) / 2
-	var y_pos = camera_rect.size.y - height - BOTTOM_MARGIN
+	var x_pos = -width / 2
+	var y_pos = height / 2 + BOTTOM_MARGIN
 	
 	get_parent().get_node("ChatWindow").configure_initial_box(Vector2(x_pos, y_pos), width, height)
