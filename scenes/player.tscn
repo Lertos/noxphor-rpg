@@ -264,10 +264,6 @@ position_smoothing_speed = 10.0
 script = ExtResource("4_ugbdj")
 
 [node name="ChatWindow" parent="." instance=ExtResource("4_jlcc3")]
-offset_left = -161.0
-offset_top = -90.0
-offset_right = -161.0
-offset_bottom = -90.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
