@@ -35,7 +35,7 @@ func _input(event):
 				area.interact()
 
 func update_anim_conditions():
-	if velocity == Vector2.ZERO:
+	if velocity == Vector2.ZERO and States.is_state(States.STATE.PLAYING):
 		anim_tree["parameters/conditions/is_idle"] = true
 		anim_tree["parameters/conditions/is_moving"] = false
 	else:
