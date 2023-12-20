@@ -264,6 +264,7 @@ position_smoothing_speed = 10.0
 script = ExtResource("4_ugbdj")
 
 [node name="ChatWindow" parent="." instance=ExtResource("4_jlcc3")]
+z_index = 20
 
 [node name="Area2D" type="Area2D" parent="."]
 
