@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddedd16u4e4s2"]
+
+[ext_resource type="Script" path="res://scenes/objects/instance_changer.gd" id="1_k1g56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn155"]
+size = Vector2(16, 16)
+
+[node name="InstanceChanger" type="Area2D"]
+script = ExtResource("1_k1g56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gn155")
+
+[connection signal="body_entered" from="." to="." method="on_body_entered"]
