@@ -4,6 +4,23 @@ const SCENE_INTERACT_OPTIONS = preload("res://scenes/ui/interact_options.tscn")
 
 var chat_window
 
+func change_maps(scene_to_remove: Node, scene_to_add: String):
+	#Fade out into black
+	print("Fade out")
+	
+	#Load the new scene
+	var new_scene = load(scene_to_add)
+	var loaded_scene = new_scene.instantiate()
+	
+	#When the current scene leaves the tree, add the new scene
+	scene_to_remove.queue_free()
+	await scene_to_remove.tree_exited
+	
+	self.add_child(loaded_scene, 0)
+	
+	#When the new scene enters the tree, fade in
+	print("Fade in")
+
 func spawn_interact_popup(pos: Vector2, entity_id: String, options: Array):
 	var popup = SCENE_INTERACT_OPTIONS.instantiate()
 	
