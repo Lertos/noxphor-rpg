@@ -9,7 +9,7 @@ const tool_resources: Dictionary = {
 const tool_scene_name: String = "current_tool"
 const tools_allowed: bool = true
 
-var is_any_tool_open: bool = false
+var tool_id_open: int = -1
 
 func _unhandled_input(event):
 	if not tools_allowed:
@@ -23,21 +23,38 @@ func open_tool(tool_enum: TOOL):
 	var resource_path: String = tool_resources[tool_enum]
 	
 	if resource_path == null:
+		assert(false, "tools.gd/open_tool: resource_path is NULL")
 		return
 	
 	var tool_scene = load(resource_path)
 
 	if tool_scene == null:
+		assert(false, "tools.gd/open_tool: tool_scene is NULL")
 		return
 
-	#We are ready to open the new tool, so need to check if there is a current tool open
-	if is_any_tool_open and get_tree().get_root().has_node(tool_scene_name):
-		get_tree().get_root().get_node(tool_scene_name).queue_free()
-		await get_tree().get_root().get_node(tool_scene_name).tree_exited
-	
-	add_new_tool(tool_scene)
+	var temp_tool_id = tool_id_open
 
-func add_new_tool(tool_scene):
+	#If there is a tool currently open we need to close it
+	if tool_id_open != -1 and get_tree().get_root().has_node(tool_scene_name):
+		close_current_tool()
+		
+	#If it's not the same tool key, then open the new tool as well
+	if temp_tool_id != tool_enum:
+		add_new_tool(tool_scene, tool_enum)
+
+func close_current_tool():
+	tool_id_open = -1
+	
+	#Set the state so other events/inputs aren't triggered
+	States.change_state(States.STATE.PLAYING, "")
+	
+	#Change the screen size to the viewport as camera size changes
+	toggle_player_camera(true)
+	
+	get_tree().get_root().get_node(tool_scene_name).queue_free()
+	await get_tree().get_root().get_node(tool_scene_name).tree_exited
+
+func add_new_tool(tool_scene, tool_enum: TOOL):
 	var new_scene = tool_scene.instantiate()
 	
 	#Set the state so other events/inputs aren't triggered
@@ -46,8 +63,8 @@ func add_new_tool(tool_scene):
 	#Change the screen size to the viewport as camera size changes
 	toggle_player_camera(false)
 	
-	#Make sure to state that a tool is open
-	is_any_tool_open = true
+	#Make sure to st the currently open tool
+	tool_id_open = tool_enum
 	
 	get_tree().get_root().add_child(new_scene)
 	
@@ -55,7 +72,7 @@ func add_new_tool(tool_scene):
 
 #Disable the camera so the viewport is used properly
 func toggle_player_camera(set_to: bool):
-	var node = get_tree().get_root().get_node("root")
+	var node = get_tree().get_root().get_node("root").get_child(1)
 	
 	if node.has_node("Player"):
 		node = node.get_node("Player")
