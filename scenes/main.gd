@@ -16,7 +16,7 @@ func change_maps(scene_to_remove: Node, scene_to_add: String):
 	scene_to_remove.queue_free()
 	await scene_to_remove.tree_exited
 	
-	self.add_child(loaded_scene, 0)
+	self.add_child(loaded_scene, 1)
 	
 	#When the new scene enters the tree, fade in
 	print("Fade in")

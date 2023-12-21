@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dudptvslvs0ii"]
+[gd_scene load_steps=9 format=3 uid="uid://dudptvslvs0ii"]
 
 [ext_resource type="Texture2D" uid="uid://cipuainou2fpg" path="res://art/tilesets/Tiles A.png" id="2_a23pn"]
 [ext_resource type="PackedScene" uid="uid://32hr6va7e6bs" path="res://scenes/player.tscn" id="3_s5arq"]
 [ext_resource type="PackedScene" uid="uid://ddedd16u4e4s2" path="res://scenes/objects/instance_changer.tscn" id="4_k2qk1"]
+[ext_resource type="PackedScene" uid="uid://mtedcynjbvkp" path="res://scenes/objects/characters/lisa_burch.tscn" id="5_n4t78"]
 [ext_resource type="Texture2D" uid="uid://b54xdlqrd8uqq" path="res://art/tilesets/Walls A 3.png" id="11_toskx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ni3jm"]
@@ -44,3 +45,6 @@ position = Vector2(0, 65)
 position = Vector2(0, 91)
 scale = Vector2(4, 1)
 scene_to_load = "res://scenes/levels/tutorial_island.tscn"
+
+[node name="Character" parent="." instance=ExtResource("5_n4t78")]
+position = Vector2(0, -16)
