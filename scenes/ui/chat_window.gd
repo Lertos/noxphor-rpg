@@ -10,6 +10,7 @@ func configure_initial_box(pos: Vector2, width: float, height: float):
 
 func send_message(text: String):
 	$Background/MarginContainer/VBoxContainer/RichTextLabel.text = text
+
 	self.visible = true
 
 func close_window():
@@ -22,6 +23,8 @@ func _input(event):
 	#TODO: Change to continue the conversation, exit it, etc
 	if event.is_action_pressed("action"):
 		call_deferred("change_state")
+		
+	get_viewport().set_input_as_handled()
 
 func change_state():
 	States.change_state(States.STATE.PLAYING)

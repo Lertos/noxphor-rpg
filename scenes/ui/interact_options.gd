@@ -66,3 +66,5 @@ func _input(event):
 				change_selected_option(current_option - 1)
 		elif event.is_action_pressed("action"):
 			get_tree().get_root().get_node("root").handle_popup_event(self.name, options[current_option])
+			
+		get_viewport().set_input_as_handled()
