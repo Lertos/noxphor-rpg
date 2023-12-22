@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Enums="*res://global_scripts/enums.gd"
 States="*res://global_scripts/states.gd"
 Tools="*res://global_scripts/tools.gd"
+Nodes="*res://global_scripts/nodes.gd"
 
 [display]
 
