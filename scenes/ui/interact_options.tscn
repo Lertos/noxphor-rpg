@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/ui/interact_options.gd" id="3_t5g13"]
 
 [node name="NinePatchRect" type="NinePatchRect"]
+z_index = 15
 offset_right = 10.0
 offset_bottom = 10.0
 size_flags_vertical = 3
