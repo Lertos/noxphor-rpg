@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=13 format=3 uid="uid://c40ainbadxewg"]
 
 [ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
 [ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bxyk5xo7fuf4u" path="res://art/icons/combat_indicator_3.png" id="6_agv8l"]
 [ext_resource type="Texture2D" uid="uid://cq1d4fuxtdfpg" path="res://art/icons/combat_indicator_4.png" id="7_kyaoc"]
 [ext_resource type="Texture2D" uid="uid://c123422ugvkc5" path="res://art/icons/combat_indicator_5.png" id="7_se20q"]
+[ext_resource type="Theme" uid="uid://cggt1e0d7c7g1" path="res://resources/themes/green_button.tres" id="9_e5qki"]
+[ext_resource type="Theme" uid="uid://cx7ksvlg01q11" path="res://resources/themes/red_button.tres" id="10_01xar"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vau1"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
@@ -184,15 +186,42 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 select_mode = 1
 allow_rmb_select = true
-item_count = 8
+item_count = 7
 item_0/text = "Attack"
 item_1/text = "Talk"
-item_2/text = "Examine"
-item_3/text = "Trade"
-item_4/text = "Pickpocket"
-item_5/text = "Task"
-item_6/text = "Teleport"
-item_7/text = "Rewards"
+item_2/text = "Trade"
+item_3/text = "Pickpocket"
+item_4/text = "Task"
+item_5/text = "Teleport"
+item_6/text = "Rewards"
+
+[node name="Spacer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Save" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_e5qki")
+text = "Save"
+
+[node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_01xar")
+text = "Delete"
 
 [node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
 layout_mode = 2
