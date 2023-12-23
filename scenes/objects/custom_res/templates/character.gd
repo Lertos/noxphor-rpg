@@ -2,7 +2,13 @@ extends Resource
 class_name Character
 
 @export var name: String
-@export var id: String
+@export var id: String :
+	get:
+		return id
+	set(value):
+		if not Enums.character_ids.has(value):
+			assert(false, "The character_id: '" + value + "' does not exist in the list of IDs")
+		id = value
 @export var level: int = 1 :
 	get:
 		return level

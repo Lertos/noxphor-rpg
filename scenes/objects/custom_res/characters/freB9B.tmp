@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://v7wg2gd7wq6o"]
+
+[ext_resource type="Script" path="res://scenes/objects/custom_res/templates/character.gd" id="1_7lb1h"]
+
+[resource]
+script = ExtResource("1_7lb1h")
+name = "Fred Turner"
+id = "fred_turner"
+level = 5
+interact_options = Array[int]([0, 1, 4])

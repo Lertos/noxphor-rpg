@@ -1,4 +1,19 @@
-[gd_scene format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=11 format=3 uid="uid://c40ainbadxewg"]
+
+[ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
+[ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
+[ext_resource type="Texture2D" uid="uid://rlpdloa7a2h0" path="res://art/icons/combat_indicator_0.png" id="3_qvha2"]
+[ext_resource type="Texture2D" uid="uid://bwb1jexd5k73p" path="res://art/icons/combat_indicator_1.png" id="4_a22tk"]
+[ext_resource type="Texture2D" uid="uid://cbrhwa8x25mwj" path="res://art/icons/combat_indicator_2.png" id="5_gyseq"]
+[ext_resource type="Texture2D" uid="uid://bxyk5xo7fuf4u" path="res://art/icons/combat_indicator_3.png" id="6_agv8l"]
+[ext_resource type="Texture2D" uid="uid://cq1d4fuxtdfpg" path="res://art/icons/combat_indicator_4.png" id="7_kyaoc"]
+[ext_resource type="Texture2D" uid="uid://c123422ugvkc5" path="res://art/icons/combat_indicator_5.png" id="7_se20q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vau1"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rjcd"]
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="EntityDesigner" type="Control"]
 layout_mode = 3
@@ -7,18 +22,161 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5m5wi")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+texture = ExtResource("1_360lq")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TabContainer" type="TabContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vau1")
+
+[node name="Characters" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters"]
+layout_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+horizontal_alignment = 2
+
+[node name="Name" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+placeholder_text = "Jeff Pringles"
+
+[node name="ID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/ID"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ID"
+horizontal_alignment = 2
+
+[node name="ID" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/ID"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+placeholder_text = "jeff_pringles"
+
+[node name="Examine" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Examine"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Examine"
+horizontal_alignment = 2
+
+[node name="Examine" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Examine"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+placeholder_text = "Here is an explanation of the object"
+wrap_mode = 1
+
+[node name="Hidden" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Hidden"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hidden"
+horizontal_alignment = 2
+
+[node name="Hidden" type="CheckBox" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Hidden"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="CombatLevel" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/CombatLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Combat Level Tier"
+horizontal_alignment = 2
+
+[node name="CombatLevel" type="OptionButton" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/CombatLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+item_count = 6
+selected = 0
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("3_qvha2")
+popup/item_0/id = 0
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("4_a22tk")
+popup/item_1/id = 1
+popup/item_2/text = ""
+popup/item_2/icon = ExtResource("5_gyseq")
+popup/item_2/id = 2
+popup/item_3/text = ""
+popup/item_3/icon = ExtResource("6_agv8l")
+popup/item_3/id = 3
+popup/item_4/text = ""
+popup/item_4/icon = ExtResource("7_kyaoc")
+popup/item_4/id = 4
+popup/item_5/text = ""
+popup/item_5/icon = ExtResource("7_se20q")
+popup/item_5/id = 5
+
+[node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Panel" type="Panel" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/M"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7rjcd")
+
+[node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
+layout_mode = 2
+size_flags_horizontal = 3

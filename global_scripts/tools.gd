@@ -16,7 +16,7 @@ func _unhandled_input(event):
 		return
 	
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_F12:
+		if event.pressed and event.keycode == KEY_F1:
 			open_tool(TOOL.ENTITY_DESIGNER)
 
 func open_tool(tool_enum: TOOL):
