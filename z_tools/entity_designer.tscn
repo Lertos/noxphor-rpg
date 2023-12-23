@@ -167,6 +167,33 @@ popup/item_5/text = ""
 popup/item_5/icon = ExtResource("7_se20q")
 popup/item_5/id = 5
 
+[node name="Options" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interact Options"
+horizontal_alignment = 2
+
+[node name="Options" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Options"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+select_mode = 1
+allow_rmb_select = true
+item_count = 8
+item_0/text = "Attack"
+item_1/text = "Talk"
+item_2/text = "Examine"
+item_3/text = "Trade"
+item_4/text = "Pickpocket"
+item_5/text = "Task"
+item_6/text = "Teleport"
+item_7/text = "Rewards"
+
 [node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
