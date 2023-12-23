@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=15 format=3 uid="uid://c40ainbadxewg"]
 
 [ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
 [ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
+[ext_resource type="Script" path="res://z_tools/characters.gd" id="3_nws0a"]
 [ext_resource type="Texture2D" uid="uid://rlpdloa7a2h0" path="res://art/icons/combat_indicator_0.png" id="3_qvha2"]
 [ext_resource type="Texture2D" uid="uid://bwb1jexd5k73p" path="res://art/icons/combat_indicator_1.png" id="4_a22tk"]
 [ext_resource type="Texture2D" uid="uid://cbrhwa8x25mwj" path="res://art/icons/combat_indicator_2.png" id="5_gyseq"]
@@ -10,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c123422ugvkc5" path="res://art/icons/combat_indicator_5.png" id="7_se20q"]
 [ext_resource type="Theme" uid="uid://cggt1e0d7c7g1" path="res://resources/themes/green_button.tres" id="9_e5qki"]
 [ext_resource type="Theme" uid="uid://cx7ksvlg01q11" path="res://resources/themes/red_button.tres" id="10_01xar"]
+[ext_resource type="Theme" uid="uid://i485kwjde8nr" path="res://resources/themes/orange_button.tres" id="11_rn1vu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vau1"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
@@ -61,6 +63,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("3_nws0a")
 
 [node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters"]
 layout_mode = 2
@@ -68,22 +71,6 @@ layout_mode = 2
 [node name="Left" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Name" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Name"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Name"
-horizontal_alignment = 2
-
-[node name="Name" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Name"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-placeholder_text = "Jeff Pringles"
 
 [node name="ID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
 layout_mode = 2
@@ -100,6 +87,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 placeholder_text = "jeff_pringles"
+
+[node name="Name" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+horizontal_alignment = 2
+
+[node name="Name" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+placeholder_text = "Jeff Pringles"
 
 [node name="Examine" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
 layout_mode = 2
@@ -209,12 +212,19 @@ size_flags_vertical = 10
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="Save" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_e5qki")
 text = "Save"
+
+[node name="Update" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("11_rn1vu")
+text = "Update"
 
 [node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
@@ -236,3 +246,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7rjcd")
 [node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="add"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="update"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
