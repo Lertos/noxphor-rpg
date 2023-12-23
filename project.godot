@@ -22,6 +22,7 @@ Enums="*res://global_scripts/enums.gd"
 States="*res://global_scripts/states.gd"
 Tools="*res://global_scripts/tools.gd"
 Nodes="*res://global_scripts/nodes.gd"
+Data="*res://global_scripts/data.gd"
 
 [display]
 
