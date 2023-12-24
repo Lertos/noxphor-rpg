@@ -7,6 +7,14 @@ extends MarginContainer
 @onready var f_combat_lvl = $H/Left/CombatLevel/CombatLevel
 @onready var f_options = $H/Left/Options/Options
 
+@onready var search_bar = $H/Right/Filter/SearchBar
+@onready var list_characters = $H/Right/Filter/CharacterList
+
+func _ready():
+	for key in Data.characters.values():
+		list_characters.add_item(key)
+		
+	list_characters.sort_items_by_text()
 
 func add():
 	if not validate_shared():
@@ -18,7 +26,9 @@ func add():
 		return
 	
 	Data.add_key(Data.FILE_TYPE.CHARACTER, get_character_dict(), f_id.text)
-		
+	
+	list_characters.add_item(f_id.text)
+	list_characters.sort_items_by_text()
 	print("Added New")
 
 func update():
@@ -31,7 +41,7 @@ func update():
 		return
 		
 	Data.add_key(Data.FILE_TYPE.CHARACTER, get_character_dict(), f_id.text)
-		
+	
 	print("Updated Existing")
 
 func delete():
@@ -41,7 +51,11 @@ func delete():
 		return
 		
 	Data.remove_key(Data.FILE_TYPE.CHARACTER, f_id.text)
-		
+	
+	for index in range(0, list_characters.item_count):
+		if list_characters.get_item_text(index) == f_id.text:
+			list_characters.remove_item(index)
+	
 	print("Deleted Existing")
 
 func validate_shared() -> bool:
