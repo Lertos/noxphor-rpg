@@ -11,10 +11,7 @@ extends MarginContainer
 @onready var list_characters = $H/Right/Filter/CharacterList
 
 func _ready():
-	for key in Data.characters.values():
-		list_characters.add_item(key)
-		
-	list_characters.sort_items_by_text()
+	reset_character_list("")
 
 func add():
 	if not validate_shared():
@@ -94,3 +91,19 @@ func get_character_dict() -> Dictionary:
 	new_dict["options"] = options
 	
 	return new_dict
+
+func reset_character_list(filter_text: String):
+	list_characters.clear()
+	
+	if filter_text == "":
+		for key in Data.characters.keys():
+			list_characters.add_item(key)
+	else:
+		for key in Data.characters.keys():
+			if filter_text in key:
+				list_characters.add_item(key)
+		
+	list_characters.sort_items_by_text()
+
+func on_search_bar_text_changed(new_text):
+	reset_character_list(new_text)

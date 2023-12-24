@@ -276,3 +276,4 @@ size_flags_vertical = 3
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="add"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="update"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
+[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_search_bar_text_changed"]
