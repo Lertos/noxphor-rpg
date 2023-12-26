@@ -107,3 +107,27 @@ func reset_character_list(filter_text: String):
 
 func on_search_bar_text_changed(new_text):
 	reset_character_list(new_text)
+
+func on_character_list_item_clicked(index, at_position, mouse_button_index):
+	var char_id = list_characters.get_item_text(index)
+	
+	if char_id == null or char_id == "":
+		print("That ID cannot be retrieved from the list")
+		return
+	
+	if not Data.characters.has(char_id):
+		print("That character ID does not exist in the data dict")
+		return
+
+	var char_data = Data.characters[char_id]
+	
+	f_id.text = char_id
+	f_name.text = char_data["name"]
+	f_examine.text = char_data["examine"]
+	f_hidden.button_pressed = char_data["hidden"]
+	f_combat_lvl.select(char_data["combat_level"])
+	
+	for option in char_data["options"]:
+		for i in range(0, list_characters.item_count):
+			if list_characters.get_item_text(i) == option:
+				list_characters.select(i)
