@@ -258,7 +258,6 @@ placeholder_text = "Search a Character ID"
 [node name="CharacterList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter"]
 layout_mode = 2
 size_flags_vertical = 3
-allow_search = false
 
 [node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right"]
 layout_mode = 2

@@ -127,7 +127,10 @@ func on_character_list_item_clicked(index, at_position, mouse_button_index):
 	f_hidden.button_pressed = char_data["hidden"]
 	f_combat_lvl.select(char_data["combat_level"])
 	
+	for i in range(0, f_options.item_count):
+		f_options.deselect(i)
+	
 	for option in char_data["options"]:
-		for i in range(0, list_characters.item_count):
-			if list_characters.get_item_text(i) == option:
-				list_characters.select(i)
+		for i in range(0, f_options.item_count):
+			if f_options.get_item_text(i) == option:
+				f_options.select(i, false)
