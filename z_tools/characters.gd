@@ -28,7 +28,6 @@ func add():
 	
 	list_characters.add_item(f_id.text)
 	list_characters.sort_items_by_text()
-	print("Added New")
 
 func update():
 	if not validate_shared():
@@ -40,8 +39,6 @@ func update():
 		return
 		
 	Data.save_key(DATA_TYPE, get_character_dict(), f_id.text)
-	
-	print("Updated Existing")
 
 func delete():
 	#Make sure the ID actually exists
@@ -55,8 +52,6 @@ func delete():
 		if list_characters.get_item_text(index) == f_id.text:
 			list_characters.remove_item(index)
 			break
-	
-	print("Deleted Existing")
 
 func validate_shared() -> bool:
 	var alert_message = ""

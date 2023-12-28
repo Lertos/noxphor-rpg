@@ -23,9 +23,8 @@ var files = {
 }
 
 func _ready():
-	#Load all files
 	for index in TYPE.values():
-		load_file(files[index])
+		load_file(index)
 
 func exists(type: TYPE, dict_key) -> bool:
 	return files[type]["data"].has(dict_key)
@@ -41,23 +40,57 @@ func save_key(type: TYPE, dict_to_save: Dictionary, dict_key):
 	
 	if debug:
 		print(files[type]["data"][dict_key])
+		print("LOG: key added")
 	
-	print("Key added")
 	save_file(type)
 
 func delete_key(type: TYPE, dict_key):
 	files[type]["data"].erase(dict_key)
 
 	if debug:
+		print("LOG: key deleted")
 		print(files[type]["data"])
 
-	print("Key deleted")
 	save_file(type)
 	
 func save_file(type: TYPE):
-	print("File saved")
-	pass
+	var file_path = get_file_path(type)
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	var json_str = JSON.stringify(files[type]["data"])
+	
+	file.store_line(json_str)
+	
+	if debug:
+		print("LOG: file saved at: " + file_path)
 
-func load_file(file_dict: Dictionary):
-	print(file_dict["file_name"] + " loaded")
-	pass
+func load_file(type: TYPE):
+	var file_path = get_file_path(type)
+	
+	#Check to make sure the file exists
+	if not FileAccess.file_exists(file_path):
+		print("ERROR: " + files[type]["file_name"] + " does not exist")
+		return
+	
+	#Load the file into memory
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	
+	if not file or file == null:
+		print("ERROR: " + files[type]["file_name"] + " cannot be loaded")
+		return
+	
+	#Load the data into the respective dict
+	var data = JSON.parse_string(file.get_line())
+	
+	if data:
+		files[type]["data"] = data
+	
+	if debug:
+		print(files[type]["file_name"] + " loaded")
+
+func get_file_path(type: TYPE) -> String:
+	if files[type]["is_master_data"]:
+		return "res://" + files[type]["file_name"]
+	else:
+		return "user://" + files[type]["file_name"]
+	
+	
