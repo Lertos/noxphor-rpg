@@ -1,21 +1,21 @@
 extends Node
 
-enum FILE_TYPE {CHARACTER, DIALOGUE, QUESTS}
+enum TYPE {CHARACTER, DIALOGUE, QUESTS}
 
 const debug = true
 
 var files = {
-	FILE_TYPE.CHARACTER: {
+	TYPE.CHARACTER: {
 		"file_name": "characters.dat",
 		"data": {},
 		"is_master_data": true
 	},
-	FILE_TYPE.DIALOGUE: {
+	TYPE.DIALOGUE: {
 		"file_name": "dialogue.dat",
 		"data": {},
 		"is_master_data": true
 	},
-	FILE_TYPE.QUESTS: {
+	TYPE.QUESTS: {
 		"file_name": "quests.dat",
 		"data": {},
 		"is_master_data": true
@@ -24,19 +24,19 @@ var files = {
 
 func _ready():
 	#Load all files
-	for index in FILE_TYPE.values():
+	for index in TYPE.values():
 		load_file(files[index])
 
-func exists(type: FILE_TYPE, dict_key) -> bool:
+func exists(type: TYPE, dict_key) -> bool:
 	return files[type]["data"].has(dict_key)
 
-func get_entire_dict(type: FILE_TYPE):
+func get_entire_dict(type: TYPE):
 	return files[type]["data"]
 	
-func get_dict(type: FILE_TYPE, dict_key):
+func get_dict(type: TYPE, dict_key):
 	return files[type]["data"][dict_key]
 	
-func save_key(type: FILE_TYPE, dict_to_save: Dictionary, dict_key):
+func save_key(type: TYPE, dict_to_save: Dictionary, dict_key):
 	files[type]["data"][dict_key] = dict_to_save
 	
 	if debug:
@@ -45,7 +45,7 @@ func save_key(type: FILE_TYPE, dict_to_save: Dictionary, dict_key):
 	print("Key added")
 	save_file(type)
 
-func delete_key(type: FILE_TYPE, dict_key):
+func delete_key(type: TYPE, dict_key):
 	files[type]["data"].erase(dict_key)
 
 	if debug:
@@ -54,7 +54,7 @@ func delete_key(type: FILE_TYPE, dict_key):
 	print("Key deleted")
 	save_file(type)
 	
-func save_file(type: FILE_TYPE):
+func save_file(type: TYPE):
 	print("File saved")
 	pass
 
