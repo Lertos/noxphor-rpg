@@ -52,6 +52,7 @@ func delete():
 	for index in range(0, list_characters.item_count):
 		if list_characters.get_item_text(index) == f_id.text:
 			list_characters.remove_item(index)
+			break
 	
 	print("Deleted Existing")
 
