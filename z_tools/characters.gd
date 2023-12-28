@@ -10,6 +10,8 @@ extends MarginContainer
 @onready var search_bar = $H/Right/Filter/SearchBar
 @onready var list_characters = $H/Right/Filter/CharacterList
 
+const DATA_TYPE = Data.TYPE.CHARACTER
+
 func _ready():
 	reset_character_list("")
 
@@ -18,11 +20,11 @@ func add():
 		return
 		
 	#Make sure the ID doesn't already exist
-	if Data.exists(Data.TYPE.CHARACTER, f_id.text):
+	if Data.exists(DATA_TYPE, f_id.text):
 		print("That character ID already exists. Perhaps you meant to 'Update' it?")
 		return
 	
-	Data.save_key(Data.TYPE.CHARACTER, get_character_dict(), f_id.text)
+	Data.save_key(DATA_TYPE, get_character_dict(), f_id.text)
 	
 	list_characters.add_item(f_id.text)
 	list_characters.sort_items_by_text()
@@ -33,21 +35,21 @@ func update():
 		return
 		
 	#Make sure the ID actually exists
-	if not Data.exists(Data.TYPE.CHARACTER, f_id.text):
+	if not Data.exists(DATA_TYPE, f_id.text):
 		print("That character ID doesn't exist. Perhaps you meant to 'Add' it?")
 		return
 		
-	Data.save_key(Data.TYPE.CHARACTER, get_character_dict(), f_id.text)
+	Data.save_key(DATA_TYPE, get_character_dict(), f_id.text)
 	
 	print("Updated Existing")
 
 func delete():
 	#Make sure the ID actually exists
-	if not Data.exists(Data.TYPE.CHARACTER, f_id.text):
+	if not Data.exists(DATA_TYPE, f_id.text):
 		print("That character ID doesn't exist, so it cannot be deleted")
 		return
 		
-	Data.delete_key(Data.TYPE.CHARACTER, f_id.text)
+	Data.delete_key(DATA_TYPE, f_id.text)
 	
 	for index in range(0, list_characters.item_count):
 		if list_characters.get_item_text(index) == f_id.text:
@@ -97,10 +99,10 @@ func reset_character_list(filter_text: String):
 	list_characters.clear()
 	
 	if filter_text == "":
-		for key in Data.get_entire_dict(Data.TYPE.CHARACTER).keys():
+		for key in Data.get_entire_dict(DATA_TYPE).keys():
 			list_characters.add_item(key)
 	else:
-		for key in Data.get_entire_dict(Data.TYPE.CHARACTER).keys():
+		for key in Data.get_entire_dict(DATA_TYPE).keys():
 			if filter_text in key:
 				list_characters.add_item(key)
 		
@@ -116,11 +118,11 @@ func on_character_list_item_clicked(index, at_position, mouse_button_index):
 		print("That ID cannot be retrieved from the list")
 		return
 	
-	if not Data.exists(Data.TYPE.CHARACTER, char_id):
+	if not Data.exists(DATA_TYPE, char_id):
 		print("That character ID does not exist in the data dict")
 		return
 
-	var char_data = Data.get_dict(Data.TYPE.CHARACTER, char_id)
+	var char_data = Data.get_dict(DATA_TYPE, char_id)
 	
 	f_id.text = char_id
 	f_name.text = char_data["name"]
