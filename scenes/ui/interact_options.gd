@@ -1,5 +1,9 @@
 extends NinePatchRect
 
+@onready var options_list = $Margin/V/Options
+@onready var character_level = $Margin/V/H/Level
+@onready var character_name = $Margin/V/H/Name
+
 const PREFIX_COLOR = "[color=yellow]"
 const SUFFIX_COLOR = "[/color]"
 
@@ -22,17 +26,17 @@ func show_options(given_options: Array):
 		#An atrocious workaround... The fact RTL's can't just auto-adjust width is ridiculous
 		new_label.custom_minimum_size.x = new_label.get_theme_font("font").get_string_size(new_label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, new_label.get_theme_font_size("font_size")).x
 		
-		$MarginContainer/VBoxContainer.add_child(new_label)
+		options_list.add_child(new_label)
 
-	if $MarginContainer/VBoxContainer.get_child_count() > 0:
+	if options_list.get_child_count() > 0:
 		change_selected_option(0)
 
 	call_deferred("update_sizing")
 
 func update_sizing():
 	#Resize the ninepatch to fit the options
-	self.size.x = $MarginContainer.size.x
-	self.size.y = $MarginContainer.size.y
+	self.size.x = $Margin.size.x
+	self.size.y = $Margin.size.y
 	
 	#Always put it in the middle, vertically, of the source's position
 	self.position.y -= self.size.y / 2
@@ -44,12 +48,12 @@ func change_selected_option(new_index: int):
 	var label
 	
 	if current_option != null:
-		label = $MarginContainer/VBoxContainer.get_child(current_option)
+		label = options_list.get_child(current_option)
 		label.text = label.text.replace(PREFIX_COLOR, "").replace(SUFFIX_COLOR, "")
 	
 	current_option = new_index
 	
-	label = $MarginContainer/VBoxContainer.get_child(new_index)
+	label = options_list.get_child(new_index)
 	label.text = PREFIX_COLOR + label.text + SUFFIX_COLOR
 
 func _input(event):

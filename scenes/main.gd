@@ -44,9 +44,10 @@ func spawn_interact_popup(pos: Vector2, entity_id: String, options: Array):
 	
 	popup.name = entity_id
 	popup.position = pos
-	popup.show_options(options)
 	
 	node_popups.add_child(popup)
+	
+	popup.show_options(options)
 
 func handle_popup_event(entity_id: String, chosen_option: String):
 	if chosen_option.to_lower() == "leave":
