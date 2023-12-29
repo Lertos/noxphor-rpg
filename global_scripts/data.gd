@@ -23,8 +23,20 @@ var files = {
 }
 
 func _ready():
+	if debug:
+		run_tests()
+	
 	for index in TYPE.values():
 		load_file(index)
+
+#Simply just for running any tests I want
+func run_tests():
+	Nodes.event_manager.handle("talk::dude::1")
+	Nodes.event_manager.handle("talk::1")
+	Nodes.event_manager.handle("player::1")
+	Nodes.event_manager.handle("not_valid::1")
+	Nodes.event_manager.handle("player::give")
+	Nodes.event_manager.handle("player::give::sword::1")
 
 func exists(type: TYPE, dict_key) -> bool:
 	return files[type]["data"].has(dict_key)
@@ -92,5 +104,3 @@ func get_file_path(type: TYPE) -> String:
 		return "res://" + files[type]["file_name"]
 	else:
 		return "user://" + files[type]["file_name"]
-	
-	

@@ -25,13 +25,13 @@ func handle(event_id: String):
 	if event_parts.size() == 0:
 		print("event_manager.gd - A bad event call was made (no separators): " + event_id)
 		return
-		
-	var current_value = event_parts[0]
 	
 	#If the first ID doesn't exist, then return
-	if not event_ids.has(current_value):
+	if not event_ids.has(event_parts[0]):
 		print("event_manager.gd - A bad event call was made (no existing parent key): " + event_id)
 		return
+		
+	var current_value = event_ids[event_parts[0]]
 	
 	#Filter through each separator until you find a function call
 	for index in range(1, event_parts.size()):
@@ -48,8 +48,12 @@ func handle(event_id: String):
 				
 			current_value = current_value[event_parts[index]]
 			
-		#Check if the value for the key is a string, if so it is the function name
-		if current_value is String:
+			#If it is now a String, then we must pass the rest of the array
+			if current_value is String:
+				call_method(current_value, event_parts.slice(min(index + 1, event_parts.size()), event_parts.size()))
+				break
+			
+		elif current_value is String:
 			call_method(current_value, event_parts.slice(index, event_parts.size()))
 			break
 
@@ -57,3 +61,4 @@ func call_method(func_name: String, remaining_parts: Array):
 	print("==Call Method")
 	print(func_name)
 	print(remaining_parts)
+	print()
