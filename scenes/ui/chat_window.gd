@@ -9,7 +9,7 @@ func configure_initial_box(pos: Vector2, width: float, height: float):
 	$Background.size.y = height
 
 func send_message(text: String):
-	$Background/MarginContainer/VBoxContainer/RichTextLabel.text = text
+	$Background/Margin/V/Label.text = text
 
 	self.visible = true
 
