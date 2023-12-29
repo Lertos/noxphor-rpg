@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bto41xtr0webx"]
+[gd_scene load_steps=4 format=3 uid="uid://bto41xtr0webx"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uq32w"]
 [ext_resource type="PackedScene" uid="uid://bd1u6pysp5ukm" path="res://scenes/levels/tutorial_island.tscn" id="2_fb4ia"]
+[ext_resource type="Script" path="res://scripts/event_manager.gd" id="3_30mw8"]
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_uq32w")
@@ -13,3 +14,6 @@ script = ExtResource("1_uq32w")
 [node name="Popups" type="Node" parent="."]
 
 [node name="Fader" type="Node" parent="."]
+
+[node name="EventManager" type="Node" parent="."]
+script = ExtResource("3_30mw8")

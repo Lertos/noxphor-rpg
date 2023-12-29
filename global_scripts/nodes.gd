@@ -5,6 +5,7 @@ extends Node
 #always be the same, or if it changes, you only need to change it here
 
 @onready var root_node = get_tree().get_root().get_node("root")
+@onready var event_manager = root_node.get_node("EventManager")
 
 func camera():
 	var node = root_node.get_node("Level").get_child(0)
