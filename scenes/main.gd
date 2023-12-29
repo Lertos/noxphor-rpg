@@ -1,7 +1,7 @@
 extends Node2D
 
 const SCENE_INTERACT_OPTIONS = preload("res://scenes/ui/interact_options.tscn")
-const SCENE_FADER = preload("res://scenes/fader.tscn")
+const SCENE_FADER = preload("res://scenes/ui/fader.tscn")
 
 @onready var node_popups = $Popups
 @onready var node_level = $Level
