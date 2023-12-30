@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	get_tree().get_root().get_node("root").chat_window = self
+	Nodes.Root.chat_window = self
 
 func configure_initial_box(pos: Vector2, width: float, height: float):
 	$Background.position = pos
