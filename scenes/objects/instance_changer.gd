@@ -8,4 +8,4 @@ extends Area2D
 func on_body_entered(body):
 	if body.name == "Player":
 		if scene_to_load != null:
-			get_tree().get_root().get_node("root").change_maps(self.get_parent(), scene_to_load)
+			Nodes.Root.change_maps(self.get_parent(), scene_to_load)

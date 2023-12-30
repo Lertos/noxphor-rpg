@@ -1,14 +1,13 @@
 extends Node
 
-#The entire idea of this singleton is to reference commonly used nodes
-#from a single method call / variable where you know the paths will
-#always be the same, or if it changes, you only need to change it here
+#This singleton is used to reference common nodes using a single variable/method.
+#The paths will always be the same, or if it changes, you only need to change it here.
 
-@onready var root_node = get_tree().get_root().get_node("root")
-@onready var event_manager = root_node.get_node("EventManager")
+@onready var Root = get_tree().get_root().get_node("root")
+@onready var Event = EventManager.new()
 
 func camera():
-	var node = root_node.get_node("Level").get_child(0)
+	var node = Root.get_node("Level").get_child(0)
 
 	if node.has_node("Player"):
 		node = node.get_node("Player")
