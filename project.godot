@@ -23,6 +23,7 @@ States="*res://global_scripts/states.gd"
 Tools="*res://global_scripts/tools.gd"
 Nodes="*res://global_scripts/nodes.gd"
 Data="*res://global_scripts/data.gd"
+Helper="*res://global_scripts/helper.gd"
 
 [display]
 
