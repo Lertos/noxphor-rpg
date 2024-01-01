@@ -4,7 +4,10 @@ extends Node
 #The paths will always be the same, or if it changes, you only need to change it here.
 
 @onready var Root = get_tree().get_root().get_node("root")
-@onready var Event = EventManager.new()
+
+@onready var Player = PlayerManager.new()
+@onready var NPC = CharacterManager.new()
+@onready var Dialogue = DialogueManager.new()
 
 func camera():
 	var node = Root.get_node("Level").get_child(0)
