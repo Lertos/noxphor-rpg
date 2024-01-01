@@ -22,7 +22,7 @@ func show_options(given_options: Array):
 		new_label.text = option
 		new_label.fit_content = true
 		new_label.bbcode_enabled = true
-		new_label.custom_minimum_size.x = Helper.text_width(new_label)
+		new_label.custom_minimum_size.x = Helper.label_width(new_label)
 		
 		options_list.add_child(new_label)
 

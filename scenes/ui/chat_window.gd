@@ -3,6 +3,7 @@ extends Control
 @onready var dialogue_label = $Background/Margin/V/Label
 @onready var name_label = $Background/Name/Margin/Label
 
+var initial_name_label_size
 var initial_continue_pos
 var continue_tween
 
@@ -11,10 +12,11 @@ func _ready():
 	
 	#Setup the tween for the continue button
 	initial_continue_pos = $Background/Continue.position
+	initial_name_label_size = $Background/Name.size
 	
 	continue_tween = get_tree().create_tween().set_loops()
-	continue_tween.tween_property($Background/Continue, "position", Vector2(0, 1.5), 0.5).as_relative()
-	continue_tween.tween_property($Background/Continue, "position", Vector2(0, -1.5), 0.5).as_relative()
+	continue_tween.tween_property($Background/Continue, "position", Vector2(0, 1), 0.5).as_relative()
+	continue_tween.tween_property($Background/Continue, "position", Vector2(0, -1), 0.5).as_relative()
 	continue_tween.stop()
 
 func configure_initial_box(pos: Vector2, width: float, height: float):
@@ -24,19 +26,26 @@ func configure_initial_box(pos: Vector2, width: float, height: float):
 
 #TODO: Change param to a Dialogue object and extrapolate the text and name (and if there's a next)
 func send_message(text: String):
-	var char_name = "DeeDeeDeeDeeDeeDeeDee"
-	
 	dialogue_label.text = text
-	name_label.text = "[center]" + char_name + "[/center]"
-	
-	var name_length = Helper.text_width(name_label)
-	
-	if name_length > $Background/Name.size.x:
-		$Background/Name.size.x = name_length - $Background/Name/Margin.get_theme_constant("theme_override_constants/margin_left")
 
+	#TODO: Get the name from the Dialogue object
+	set_dialogue_name("Dee")
 	show_continue()
 	
 	self.visible = true
+
+func set_dialogue_name(char_name: String):
+	$Background/Name.size = initial_name_label_size
+	name_label.text = char_name
+	
+	#Need to check if the name is bigger than the default width
+	var name_length = Helper.label_width(name_label)
+	
+	if name_length > $Background/Name.size.x:
+		$Background/Name.size.x = name_length + $Background/Name/Margin.get_theme_constant("margin_left") * 2
+	
+	#Add the "center" BBCode back in the center the name
+	name_label.text = "[center]" + char_name + "[/center]"
 
 func show_continue():
 	$Background/Continue.position = initial_continue_pos

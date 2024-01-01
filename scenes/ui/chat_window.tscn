@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8vb0pcrgq3lw"]
+[gd_scene load_steps=5 format=3 uid="uid://b8vb0pcrgq3lw"]
 
 [ext_resource type="Script" path="res://scenes/ui/chat_window.gd" id="1_grhjx"]
 [ext_resource type="Texture2D" uid="uid://36552og31g41" path="res://art/ui/UI Window B.png" id="2_kxymv"]
 [ext_resource type="Theme" uid="uid://dimha64wmr1p8" path="res://resources/themes/default_font_rich.tres" id="3_kebkh"]
 
+[sub_resource type="Theme" id="Theme_rjiu6"]
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+
 [node name="ChatWindow" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,10 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme = SubResource("Theme_rjiu6")
 
 [node name="Label" type="RichTextLabel" parent="Background/Continue/Margin"]
 layout_mode = 2
