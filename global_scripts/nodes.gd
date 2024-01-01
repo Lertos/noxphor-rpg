@@ -5,6 +5,7 @@ extends Node
 
 @onready var Root = get_tree().get_root().get_node("root")
 
+@onready var Scenes = SceneManager.new()
 @onready var Player = PlayerManager.new()
 @onready var NPC = CharacterManager.new()
 @onready var Dialogue = DialogueManager.new()
