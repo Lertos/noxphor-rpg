@@ -22,9 +22,7 @@ func show_options(given_options: Array):
 		new_label.text = option
 		new_label.fit_content = true
 		new_label.bbcode_enabled = true
-		
-		#An atrocious workaround... The fact RTL's can't just auto-adjust width is ridiculous
-		new_label.custom_minimum_size.x = new_label.get_theme_font("font").get_string_size(new_label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, new_label.get_theme_font_size("font_size")).x
+		new_label.custom_minimum_size.x = Helper.text_width(new_label)
 		
 		options_list.add_child(new_label)
 

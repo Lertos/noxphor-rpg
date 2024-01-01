@@ -1,8 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8vb0pcrgq3lw"]
+[gd_scene load_steps=7 format=3 uid="uid://b8vb0pcrgq3lw"]
 
 [ext_resource type="Script" path="res://scenes/ui/chat_window.gd" id="1_grhjx"]
 [ext_resource type="Texture2D" uid="uid://36552og31g41" path="res://art/ui/UI Window B.png" id="2_kxymv"]
 [ext_resource type="Theme" uid="uid://dimha64wmr1p8" path="res://resources/themes/default_font_rich.tres" id="3_kebkh"]
+
+[sub_resource type="Animation" id="Animation_l2ppe"]
+resource_name = "bounce"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(248, 53), Vector2(248, 52), Vector2(248, 53), Vector2(248, 54), Vector2(248, 53)]
+}
+
+[sub_resource type="Animation" id="Animation_7juhh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(248, 53)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xian"]
+_data = {
+"RESET": SubResource("Animation_7juhh"),
+"bounce": SubResource("Animation_l2ppe")
+}
 
 [node name="ChatWindow" type="Control"]
 layout_mode = 3
@@ -89,9 +127,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -66.0
-offset_top = -6.0
+offset_top = -6.96913
 offset_right = 4.0
-offset_bottom = 14.0
+offset_bottom = 13.031
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("2_kxymv")
@@ -121,3 +159,9 @@ text = "[center]Continue[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Continue"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_8xian")
+}

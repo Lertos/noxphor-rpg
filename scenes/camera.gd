@@ -1,6 +1,6 @@
 extends Camera2D
 
-const BOTTOM_MARGIN: float = 10.0
+const BOTTOM_MARGIN: float = 5.0
 const DESIRED_WIDTH: float = 0.7 #0.2 = 20%
 const DESIRED_HEIGHT: float = 0.3 #0.2 = 20%
 
@@ -14,6 +14,6 @@ func _ready() -> void:
 	var height = camera_rect.y * DESIRED_HEIGHT
 	
 	var x_pos = -width / 2
-	var y_pos = height / 2 + BOTTOM_MARGIN
+	var y_pos = height / 2 - BOTTOM_MARGIN
 	
 	get_parent().get_node("ChatWindow").configure_initial_box(Vector2(x_pos, y_pos), width, height)

@@ -72,52 +72,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="RichTextLabel" parent="Background/Name/Margin"]
+[node name="V" type="VBoxContainer" parent="Background/Name/Margin"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Background/Name/Margin/V"]
 layout_mode = 2
 theme = ExtResource("3_kebkh")
 bbcode_enabled = true
 text = "Templeton"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Continue" type="NinePatchRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -66.0
-offset_top = -6.0
-offset_right = 4.0
-offset_bottom = 14.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("2_kxymv")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Margin" type="MarginContainer" parent="Background/Continue"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Label" type="RichTextLabel" parent="Background/Continue/Margin"]
-layout_mode = 2
-theme = ExtResource("3_kebkh")
-bbcode_enabled = true
-text = "[center]Continue[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
