@@ -11,7 +11,6 @@ MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 8
 
 [node name="ChatWindow" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,12 +82,13 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme = ExtResource("3_kebkh")
 bbcode_enabled = true
-text = "Templeton"
+text = "[center]Templeton[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
 [node name="Continue" type="NinePatchRect" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

@@ -26,13 +26,21 @@ func configure_initial_box(pos: Vector2, width: float, height: float):
 
 #TODO: Change param to a Dialogue object and extrapolate the text and name (and if there's a next)
 func send_message(text: String):
-	dialogue_label.text = text
-
 	#TODO: Get the name from the Dialogue object
 	set_dialogue_name("Dee")
-	show_continue()
+	set_dialogue_text(text)
 	
 	self.visible = true
+
+func set_dialogue_text(text: String):
+	dialogue_label.text = text
+	dialogue_label.visible_ratio = 0
+	
+	var time = dialogue_label.text.length() / Data.reveal_speed
+
+	var reveal_tween = create_tween()
+	reveal_tween.tween_property(dialogue_label, "visible_ratio", 1, time)
+	reveal_tween.tween_callback(self.show_continue)
 
 func set_dialogue_name(char_name: String):
 	$Background/Name.size = initial_name_label_size
@@ -49,9 +57,11 @@ func set_dialogue_name(char_name: String):
 
 func show_continue():
 	$Background/Continue.position = initial_continue_pos
+	$Background/Continue.visible = true
 	continue_tween.play()
 
 func close_window():
+	$Background/Continue.visible = false
 	continue_tween.stop()
 	self.visible = false
 	

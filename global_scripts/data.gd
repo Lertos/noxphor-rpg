@@ -1,8 +1,11 @@
 extends Node
 
 enum TYPE {CHARACTER, DIALOGUE, QUESTS}
+enum REVEAL_SPEED {SLOW, MID, FAST}
 
 const debug = true
+
+var reveal_speed: float
 
 var files = {
 	TYPE.CHARACTER: {
@@ -26,8 +29,24 @@ func _ready():
 	if debug:
 		run_tests()
 	
+	#Set the default text speed
+	set_text_speed(REVEAL_SPEED.SLOW)
+	
 	for index in TYPE.values():
 		load_file(index)
+		
+func set_text_speed(speed: REVEAL_SPEED):
+	var chosen_speed = 50.0
+	
+	match speed:
+		REVEAL_SPEED.SLOW:
+			chosen_speed = 30.0
+		REVEAL_SPEED.MID:
+			chosen_speed = 50.0
+		REVEAL_SPEED.FAST:
+			chosen_speed = 70.0
+			
+	reveal_speed = chosen_speed
 
 #Simply just for running any tests I want
 func run_tests():
