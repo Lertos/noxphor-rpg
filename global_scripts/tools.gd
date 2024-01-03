@@ -72,4 +72,4 @@ func add_new_tool(tool_scene, tool_enum: TOOL):
 
 #Disable the camera so the viewport is used properly
 func toggle_player_camera(set_to: bool):
-	Nodes.camera().enabled = set_to
+	Nodes.camera.enabled = set_to

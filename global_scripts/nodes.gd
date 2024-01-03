@@ -11,17 +11,4 @@ extends Node
 @onready var Dialogue = DialogueManager.new()
 @onready var Facts = FactManager.new()
 
-#TODO: Instead, make it so in the Camera's _ready func it sets itself on a "camera" variable
-func camera():
-	var node = Root.get_node("Level").get_child(0)
-
-	if node.has_node("Player"):
-		node = node.get_node("Player")
-		
-		if node.has_node("Camera"):
-			node = node.get_node("Camera")
-	
-	if node == null:
-		assert(false, "nodes.gd/camera - Cannot find camera node")
-	
-	return node
+var camera
