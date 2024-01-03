@@ -17,8 +17,85 @@ var files = {
 		"file_name": "dialogue.dat",
 		"data": {
 			#TODO: This is temporary
-			"001": {
-				
+			"fred_turner": {
+				"001": {
+					"see_once": true,
+					"has_seen": true,
+					"next": "002",
+					"text": [
+						{
+							"speaker": "you", 
+							"text": "Well howdy there!"
+						},
+						{
+							"speaker": "fred_turner", 
+							"text": "Oh hey, nice to meet you."
+						},
+						{
+							"speaker": "you", 
+							"text": "Got any quests?"
+						},
+						{
+							"speaker": "fred_turner", 
+							"text": "Hell no."
+						}
+					]
+				},
+				"002": {
+					"responses": [
+						{
+							"text": "Threaten until he gives a quest",
+							"next": "003",
+							"commands": [
+								"modify_disposition fred_turner -10"
+							]
+						},
+						{
+							"text": "Ask nicely, winking at him at the end",
+							"next": "004",
+							"commands": [
+								"modify_disposition fred_turner 10"
+							]
+						},
+						{
+							"text": "Leave, you didn't want a stupid quest anyways",
+						}
+					]
+				},
+				"003": {
+					"commands": [
+						"start_quest chest_opener"
+					],
+					"text": [
+						{
+							"speaker": "fred_turner", 
+							"text": "Wait! Stop! Fine.. I uhh, go open that chest and bring me what's inside."
+						},
+						{
+							"speaker": "you", 
+							"text": "That's better. I'll see you soon pipsqueek."
+						}
+					]
+				},
+				"004": {
+					"commands": [
+						"start_quest chest_opener"
+					],
+					"text": [
+						{
+							"speaker": "fred_turner", 
+							"text": "I'm not sure I like what you just did. Just go open that chest and bring me what's inside."
+						},
+						{
+							"speaker": "you", 
+							"text": "See ya soon sweet cheeks!"
+						},
+						{
+							"speaker": "fred_turner", 
+							"text": "Hopefully not too soon..."
+						}
+					]
+				}
 			}
 		},
 		"is_master_data": true
