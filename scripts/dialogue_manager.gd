@@ -32,7 +32,7 @@ func load_dialogue(character_id: String, dialogue_id := ""):
 	create_dialogue(character_id, dialogue_id, chosen_dialogue_dict)
 
 func load_specific_dialogue(character_id: String, dialogue_id: String) -> Dictionary:
-	var char_dict = Data.get_dict(Data.TYPE.DIALOGUE, character_id)
+	var char_dict = Data.get_value(Data.TYPE.DIALOGUE, character_id)
 	
 	#Check that the character actually has that dialogue ID
 	if not char_dict.has(dialogue_id):
@@ -43,7 +43,7 @@ func load_specific_dialogue(character_id: String, dialogue_id: String) -> Dictio
 	
 func load_most_viable_dialogue(character_id: String) -> Dictionary:
 	#Loop through and check each of the dialogues, checking if it's already been seen or if reqs are met
-	var char_dialogue = Data.get_dict(Data.TYPE.DIALOGUE, character_id)
+	var char_dialogue = Data.get_value(Data.TYPE.DIALOGUE, character_id)
 	var viable_dialogue = []
 	
 	for dialogue in char_dialogue:

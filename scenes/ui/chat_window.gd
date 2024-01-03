@@ -75,7 +75,7 @@ func show_normal_dialogue():
 				set_dialogue_name("You")
 			else:
 				$Background/Name.visible = true
-				set_dialogue_name(Data.get_dict(Data.TYPE.CHARACTER, current_dialogue.character_id)["name"])
+				set_dialogue_name(Data.get_value(Data.TYPE.CHARACTER, current_dialogue.character_id)["name"])
 
 		set_dialogue_text(dialogue_dict["text"])
 		

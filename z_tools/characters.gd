@@ -117,7 +117,7 @@ func on_character_list_item_clicked(index, at_position, mouse_button_index):
 		print("That character ID does not exist in the data dict")
 		return
 
-	var char_data = Data.get_dict(DATA_TYPE, char_id)
+	var char_data = Data.get_value(DATA_TYPE, char_id)
 	
 	f_id.text = char_id
 	f_name.text = char_data["name"]

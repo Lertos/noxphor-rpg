@@ -31,7 +31,7 @@ var files = {
 			"fred_turner": {
 				"001": {
 					"see_once": true,
-					"has_seen": true,
+					"has_seen": false,
 					"next": "002",
 					"text": [
 						{
@@ -102,6 +102,10 @@ var files = {
 							"text": "See ya soon sweet cheeks!"
 						},
 						{
+							"speaker": "", 
+							"text": "He waits for you to walk away a little before resuming his work."
+						},
+						{
 							"speaker": "fred_turner", 
 							"text": "Hopefully not too soon..."
 						}
@@ -116,12 +120,17 @@ func _ready():
 	if debug:
 		run_tests()
 	
+	#TODO: Eventually move this to some Settings singleton
 	#Set the default text speed
 	set_text_speed(REVEAL_SPEED.FAST)
 	
 	for index in TYPE.values():
 		load_file(index)
-		
+
+#Simply just for running any tests I want
+func run_tests():
+	pass
+
 func set_text_speed(speed: REVEAL_SPEED):
 	var chosen_speed = 50.0
 	
@@ -135,25 +144,19 @@ func set_text_speed(speed: REVEAL_SPEED):
 			
 	reveal_speed = chosen_speed
 
-#Simply just for running any tests I want
-func run_tests():
-	"""
-	Nodes.event_manager.handle("talk::dude::1")
-	Nodes.event_manager.handle("talk::1")
-	Nodes.event_manager.handle("player::1")
-	Nodes.event_manager.handle("not_valid::1")
-	Nodes.event_manager.handle("player::give")
-	Nodes.event_manager.handle("player::give::sword::1")
-	"""
-
 func exists(type: TYPE, dict_key) -> bool:
 	return files[type]["data"].has(dict_key)
 
 func get_entire_dict(type: TYPE):
 	return files[type]["data"]
 	
-func get_dict(type: TYPE, dict_key):
+func get_value(type: TYPE, dict_key):
 	return files[type]["data"][dict_key]
+	
+func set_value(type: TYPE, dict_key, value):
+	files[type]["data"][dict_key] = value
+	
+	save_file(type)
 	
 func save_key(type: TYPE, dict_to_save: Dictionary, dict_key):
 	files[type]["data"][dict_key] = dict_to_save
