@@ -3,9 +3,6 @@ class_name DialogueManager
 
 @onready var chat_window
 
-func _init():
-	print("DialogueManager loaded")
-
 func load_dialogue(character_id: String, dialogue_id := ""):
 	#Check that a character with that ID actually exists
 	if not Data.exists(Data.TYPE.CHARACTER, character_id):

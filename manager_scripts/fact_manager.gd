@@ -3,9 +3,6 @@ class_name FactManager
 
 #Operators: ==, <>, >=, <=, >, <
 
-func _init():
-	print("FactManager loaded")
-
 func does_fact_exist(fact_id: String):
 	if not Data.exists(Data.TYPE.FACTS, fact_id):
 		assert(false, "FactManager.gd: " + fact_id + " does not exist in Facts")
