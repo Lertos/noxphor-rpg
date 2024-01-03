@@ -7,7 +7,6 @@ const SCENE_FADER = preload("res://scenes/ui/fader.tscn")
 @onready var node_level = $Level
 @onready var node_fader = $Fader
 
-var chat_window
 var fader
 
 func change_maps(scene_to_remove: Node, scene_to_add: String):
@@ -49,17 +48,19 @@ func spawn_interact_popup(pos: Vector2, entity_id: String, options: Array):
 	
 	popup.show_options(options)
 
-func handle_popup_event(entity_id: String, chosen_option: String):
+#Handles events from the interact popup via interacting with characters
+func handle_interact_event(entity_id: String, chosen_option: String):
 	if chosen_option.to_lower() == "leave":
 		States.change_state(States.STATE.PLAYING)
 	elif chosen_option.to_lower() == "talk":
 		States.change_state(States.STATE.IN_MENU, "chat")
 		
-		chat_window.send_message("Work in progress, you filthy animal")
+		Nodes.Dialogue.load_dialogue(entity_id)
 
 	#Here simply to make sure popups don't trap people, but will also raise an error to let you know
 	else:
 		States.change_state(States.STATE.PLAYING)
 	
+	#Get rid of the interact popup
 	if node_popups.has_node(entity_id):
 		node_popups.get_node(entity_id).queue_free()
