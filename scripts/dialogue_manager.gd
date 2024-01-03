@@ -1,6 +1,8 @@
 extends Node
 class_name DialogueManager
 
+@onready var chat_window
+
 func _init():
 	print("DialogueManager loaded")
 

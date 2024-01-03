@@ -8,7 +8,7 @@ var initial_continue_pos
 var continue_tween
 
 func _ready():
-	Nodes.Root.chat_window = self
+	Nodes.Dialogue.chat_window = self
 	
 	#Setup the tween for the continue button
 	initial_continue_pos = $Background/Continue.position
