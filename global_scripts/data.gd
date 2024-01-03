@@ -1,6 +1,6 @@
 extends Node
 
-enum TYPE {CHARACTER, DIALOGUE, QUESTS}
+enum TYPE {CHARACTER, QUESTS, FACTS, DIALOGUE}
 enum REVEAL_SPEED {SLOW, MID, FAST}
 
 const debug = true
@@ -10,11 +10,22 @@ var reveal_speed: float
 var files = {
 	TYPE.CHARACTER: {
 		"file_name": "characters.dat",
-		"data": {},
-		"is_master_data": true
+		"is_master_data": true,
+		"data": {}
+	},
+	TYPE.QUESTS: {
+		"file_name": "quests.dat",
+		"is_master_data": true,
+		"data": {}
+	},
+	TYPE.FACTS: {
+		"file_name": "facts.dat",
+		"is_master_data": false,
+		"data": {}
 	},
 	TYPE.DIALOGUE: {
 		"file_name": "dialogue.dat",
+		"is_master_data": false,
 		"data": {
 			#TODO: This is temporary
 			"fred_turner": {
@@ -42,7 +53,7 @@ var files = {
 					]
 				},
 				"002": {
-					"responses": [
+					"options": [
 						{
 							"text": "Threaten until he gives a quest",
 							"next": "003",
@@ -97,13 +108,7 @@ var files = {
 					]
 				}
 			}
-		},
-		"is_master_data": true
-	},
-	TYPE.QUESTS: {
-		"file_name": "quests.dat",
-		"data": {},
-		"is_master_data": true
+		}
 	}
 }
 
