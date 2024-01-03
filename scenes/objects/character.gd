@@ -8,4 +8,4 @@ func interact():
 	for option in resource.interact_options:
 		options.append(Enums.CHARACTER_INTERACT_OPTIONS.keys()[option])
 
-	Nodes.Root.spawn_interact_popup(self.position, "character::" + resource.id, options)
+	Nodes.Root.spawn_interact_popup(self.position, resource.id, options)
