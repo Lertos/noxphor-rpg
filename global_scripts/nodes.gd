@@ -9,7 +9,9 @@ extends Node
 @onready var Player = PlayerManager.new()
 @onready var NPC = CharacterManager.new()
 @onready var Dialogue = DialogueManager.new()
+@onready var Facts = FactManager.new()
 
+#TODO: Instead, make it so in the Camera's _ready func it sets itself on a "camera" variable
 func camera():
 	var node = Root.get_node("Level").get_child(0)
 
