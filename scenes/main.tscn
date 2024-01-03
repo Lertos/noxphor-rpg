@@ -13,5 +13,3 @@ script = ExtResource("1_uq32w")
 [node name="Popups" type="Node" parent="."]
 
 [node name="Fader" type="Node" parent="."]
-
-[node name="EventManager" type="Node" parent="."]
