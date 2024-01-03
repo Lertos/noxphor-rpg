@@ -13,8 +13,7 @@ const commands = {
 	"fact": {
 		"increment": "increment_fact",
 		"set": "set_fact"
-	},
-	"factt": "fact_test"
+	}
 }
 
 #A command string, such as "fact set <fact_id> <value>" is broken down and sent to the proper function
@@ -55,6 +54,10 @@ func execute(event_id: String):
 	call_method(current_value)
 
 func call_method(func_name: String, remaining_parts := []):
-	print("==Call Method")
-	print(func_name)
-	print(remaining_parts)
+	if has_method(func_name):
+		Callable(self, func_name).call(remaining_parts)
+	else:
+		assert(false, "command_manager.gd - call_method - No method exists with the name: " + func_name)
+
+func set_fact(params: Array):
+	print("From set_fact")

@@ -3,7 +3,7 @@ extends Node
 enum TYPE {CHARACTER, QUESTS, FACTS, DIALOGUE}
 enum REVEAL_SPEED {SLOW, MID, FAST}
 
-const debug = false
+const debug = true
 
 var reveal_speed: float
 
