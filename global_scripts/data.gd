@@ -3,7 +3,7 @@ extends Node
 enum TYPE {CHARACTER, QUESTS, FACTS, DIALOGUE}
 enum REVEAL_SPEED {SLOW, MID, FAST}
 
-const debug = true
+const debug = false
 
 var reveal_speed: float
 
@@ -129,7 +129,11 @@ func _ready():
 
 #Simply just for running any tests I want
 func run_tests():
-	pass
+	Nodes.Command.execute("fact set dude 1")
+	Nodes.Command.execute("factt")
+	Nodes.Command.execute("fact set 1")
+	Nodes.Command.execute("not_valid")
+	Nodes.Command.execute("factt t")
 
 func set_text_speed(speed: REVEAL_SPEED):
 	var chosen_speed = 50.0
