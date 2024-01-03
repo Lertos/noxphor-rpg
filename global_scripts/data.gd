@@ -15,7 +15,12 @@ var files = {
 	},
 	TYPE.DIALOGUE: {
 		"file_name": "dialogue.dat",
-		"data": {},
+		"data": {
+			#TODO: This is temporary
+			"001": {
+				
+			}
+		},
 		"is_master_data": true
 	},
 	TYPE.QUESTS: {
@@ -30,7 +35,7 @@ func _ready():
 		run_tests()
 	
 	#Set the default text speed
-	set_text_speed(REVEAL_SPEED.SLOW)
+	set_text_speed(REVEAL_SPEED.FAST)
 	
 	for index in TYPE.values():
 		load_file(index)
