@@ -29,10 +29,17 @@ func load_dialogue(character_id: String, dialogue_id := ""):
 		assert(false, "DialogueManager.gd: chosen_dialogue_dict is empty")
 		return
 		
-	create_dialogue(chosen_dialogue_dict)
+	create_dialogue(character_id, dialogue_id, chosen_dialogue_dict)
 
 func load_specific_dialogue(character_id: String, dialogue_id: String) -> Dictionary:
-	return {}
+	var char_dict = Data.get_dict(Data.TYPE.DIALOGUE, character_id)
+	
+	#Check that the character actually has that dialogue ID
+	if not char_dict.has(dialogue_id):
+		assert(false, "DialogueManager.gd: '" + character_id + "' does not have the dialogue ID: " + dialogue_id)
+		return {}
+		
+	return char_dict[dialogue_id]
 	
 func load_most_viable_dialogue(character_id: String) -> Dictionary:
 	#Loop through and check each of the dialogues, checking if it's already been seen or if reqs are met
@@ -63,29 +70,64 @@ func load_most_viable_dialogue(character_id: String) -> Dictionary:
 		assert(false, "DialogueManager.gd: viable_dialogue size is 0")
 		return {}
 	
-	return get_highest_reqs_dialogue(viable_dialogue)
+	return get_highest_reqs_dialogue(char_dialogue, viable_dialogue)
 
-func get_highest_reqs_dialogue(viable_dialogue: Array) -> Dictionary:
+func get_highest_reqs_dialogue(char_dialogue: Dictionary, viable_dialogue: Array) -> Dictionary:
 	var highest_reqs = 0
-	var highest_index = -1
+	var chosen_dialogue_id = viable_dialogue[0]
 	
 	for index in range(0, viable_dialogue.size()):
-		var dict = viable_dialogue[index]
+		var dialogue_id = viable_dialogue[index]
+		var dict = char_dialogue[dialogue_id]
 		
 		if dict.has("reqs"):
 			if dict["reqs"].size() > highest_reqs:
 				highest_reqs = dict["reqs"].size()
-				highest_index = index
-	
-	if highest_index == -1:
-		return viable_dialogue[0]
-	
-	return viable_dialogue[highest_index]
+				chosen_dialogue_id = dialogue_id
+
+	return char_dialogue[chosen_dialogue_id]
 
 #TODO: Logic to check each req
 func meets_requirements(rect_dict: Dictionary) -> bool:
 	return true
 
 #Create the Dialogue object and send it to the ChatWindow
-func create_dialogue(dialogue_dict: Dictionary):
-	pass
+func create_dialogue(character_id: String, dialogue_id: String, dialogue_dict: Dictionary):
+	if dialogue_id == "":
+		dialogue_id = dialogue_dict.keys()[0]
+		
+	var dialogue = Dialogue.new(character_id, dialogue_id, dialogue_dict)
+	
+	chat_window.send_message(dialogue)
+
+func finish_dialogue(dialogue: Dialogue):
+	print("Dialogue finished")
+
+	if not dialogue.commands.is_empty():
+		execute_commands(dialogue.commands)
+	
+	#If there is a next_id, then load the next dialogue
+	if not dialogue.next_id == "":
+		load_dialogue(dialogue.character_id, dialogue.next_id)
+	#If nothing left to do, then close the chat window
+	else:
+		chat_window.call_deferred("change_state")
+
+func execute_commands(commands: Array):
+	for command in commands:
+		print(command)
+
+func handle_dialogue_option(dialogue: Dialogue, index: int):
+	if index >= dialogue.dialogue_options.size():
+		assert(false, "DialogueManager.gd: handle_dialogue_option - index is out of bounds")
+		return
+		
+	var chosen_option = dialogue.dialogue_options[index]
+	
+	if chosen_option.has("commands"):
+		execute_commands(chosen_option["commands"])
+	
+	if chosen_option.has("next"):
+		load_dialogue(dialogue.character_id, chosen_option["next"])
+	else:
+		finish_dialogue(dialogue)
