@@ -43,10 +43,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="V" type="VBoxContainer" parent="Background/Margin"]
+[node name="Options" type="VBoxContainer" parent="Background/Margin"]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="Background/Margin/V"]
+[node name="Template" type="RichTextLabel" parent="Background/Margin/Options"]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_kebkh")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Text" type="RichTextLabel" parent="Background/Margin"]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_kebkh")
 bbcode_enabled = true
