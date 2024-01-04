@@ -1,0 +1,154 @@
+[gd_scene load_steps=4 format=3 uid="uid://b144ed6adhl7v"]
+
+[ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_85owp"]
+[ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="2_pj1k6"]
+[ext_resource type="Theme" uid="uid://b4qn75pvlpxbw" path="res://resources/themes/black_button.tres" id="3_4p40s"]
+
+[node name="EntityDesigner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_85owp")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pj1k6")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Facts" type="MarginContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/Facts"]
+layout_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="Filter" type="VBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/Facts/H/Left/Filter"]
+layout_mode = 2
+placeholder_text = "Search a Fact ID"
+alignment = 1
+
+[node name="FactList" type="ItemList" parent="NinePatchRect/MarginContainer/Facts/H/Left/Filter"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Fields" type="VBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H/Right"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 8.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields/ID"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ID"
+horizontal_alignment = 2
+
+[node name="ID" type="LineEdit" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields/ID"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+placeholder_text = "quest_chest_opener"
+alignment = 1
+
+[node name="Operator" type="HBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields/Operator"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Operator"
+horizontal_alignment = 2
+
+[node name="Operator" type="LineEdit" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields/Operator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Value" type="HBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields/Value"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Value"
+horizontal_alignment = 2
+
+[node name="Value" type="LineEdit" parent="NinePatchRect/MarginContainer/Facts/H/Right/Fields/Value"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+placeholder_text = "1"
+alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/MarginContainer/Facts/H/Right"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 30
+alignment = 2
+
+[node name="Save" type="Button" parent="NinePatchRect/MarginContainer/Facts/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_4p40s")
+text = "Save"
+
+[node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/Facts/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_4p40s")
+text = "Delete"
+
+[connection signal="text_changed" from="NinePatchRect/MarginContainer/Facts/H/Left/Filter/SearchBar" to="NinePatchRect/MarginContainer/Facts" method="on_search_bar_text_changed"]
+[connection signal="item_clicked" from="NinePatchRect/MarginContainer/Facts/H/Left/Filter/FactList" to="NinePatchRect/MarginContainer/Facts" method="on_character_list_item_clicked"]
