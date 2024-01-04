@@ -3,7 +3,7 @@ extends Node
 enum TYPE {CHARACTER, QUESTS, FACTS, DIALOGUE}
 enum REVEAL_SPEED {SLOW, MID, FAST}
 
-const debug = false
+const debug = true
 
 var reveal_speed: float
 
@@ -11,21 +11,25 @@ var files = {
 	TYPE.CHARACTER: {
 		"file_name": "characters.dat",
 		"is_master_data": true,
+		"clear_on_debug": false,
 		"data": {}
 	},
 	TYPE.QUESTS: {
 		"file_name": "quests.dat",
 		"is_master_data": true,
+		"clear_on_debug": false,
 		"data": {}
 	},
 	TYPE.FACTS: {
 		"file_name": "facts.dat",
 		"is_master_data": false,
+		"clear_on_debug": true,
 		"data": {}
 	},
 	TYPE.DIALOGUE: {
 		"file_name": "dialogue.dat",
 		"is_master_data": false,
+		"clear_on_debug": false,
 		"data": {
 			#TODO: This is temporary
 			"fred_turner": {
@@ -204,8 +208,7 @@ func _ready():
 	if debug:
 		run_tests()
 	
-	#TODO: Eventually move this to some Settings singleton
-	#Set the default text speed
+	#TODO: Eventually move this to some Settings singleton #Set the default text speed
 	set_text_speed(REVEAL_SPEED.FAST)
 	
 	for index in TYPE.values():
@@ -213,11 +216,7 @@ func _ready():
 
 #Simply just for running any tests I want
 func run_tests():
-	Nodes.Command.execute("fact set dude 1")
-	Nodes.Command.execute("factt")
-	Nodes.Command.execute("fact set 1")
-	Nodes.Command.execute("not_valid")
-	Nodes.Command.execute("factt t")
+	pass
 
 func set_text_speed(speed: REVEAL_SPEED):
 	var chosen_speed = 50.0
@@ -297,6 +296,9 @@ func load_file(type: TYPE):
 	
 	if debug:
 		print(files[type]["file_name"] + " loaded")
+		
+		if files[type]["clear_on_debug"]:
+			files[type]["data"] = {}
 
 func get_file_path(type: TYPE) -> String:
 	if files[type]["is_master_data"]:
