@@ -8,9 +8,9 @@ var dialogue_options: Array
 var next_id: String
 var commands: Array
 
-func _init(character_id: String, dialogue_id: String, dialogue_dict: Dictionary):
-	self.character_id = character_id
-	self.dialogue_id = dialogue_id
+func _init(_character_id: String, _dialogue_id: String, dialogue_dict: Dictionary):
+	self.character_id = _character_id
+	self.dialogue_id = _dialogue_id
 	
 	if dialogue_dict.has("text"):
 		self.dialogue_text = dialogue_dict["text"]

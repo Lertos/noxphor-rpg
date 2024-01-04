@@ -6,10 +6,10 @@ const SPEED: float = 100.0
 
 var input_vector: Vector2 = Vector2.ZERO
 
-func _process(delta):
+func _process(_delta):
 	update_anim_conditions()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not States.is_state(States.STATE.PLAYING):
 		return
 	

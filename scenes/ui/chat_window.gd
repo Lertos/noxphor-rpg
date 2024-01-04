@@ -12,7 +12,7 @@ var initial_continue_pos
 var continue_tween
 
 func _ready():
-	Nodes.Dialogue.chat_window = self
+	Nodes.Dialogues.chat_window = self
 	
 	#Setup the tween for the continue button
 	initial_continue_pos = $Background/Continue.position
@@ -81,7 +81,7 @@ func show_normal_dialogue():
 		
 	#If the dialogue is over, check for commands and the next dialogue to goto
 	else:
-		Nodes.Dialogue.finish_dialogue(current_dialogue)
+		Nodes.Dialogues.finish_dialogue(current_dialogue)
 
 func show_options_dialogue():
 	#Hide the name plate
@@ -156,7 +156,7 @@ func _input(event):
 			show_normal_dialogue()
 		#If an option was chosen
 		elif options_node.visible:
-			Nodes.Dialogue.handle_dialogue_option(current_dialogue, current_chosen_option_index)
+			Nodes.Dialogues.handle_dialogue_option(current_dialogue, current_chosen_option_index)
 	elif options_node.visible:
 		if event.is_action_pressed("down"):
 			if current_chosen_option_index == current_dialogue.dialogue_options.size() - 1:

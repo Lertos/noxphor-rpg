@@ -8,7 +8,7 @@ extends Node
 @onready var Scenes = SceneManager.new()
 @onready var Player = PlayerManager.new()
 @onready var Command = CommandManager.new()
-@onready var Dialogue = DialogueManager.new()
+@onready var Dialogues = DialogueManager.new()
 @onready var Facts = FactManager.new()
 
 var camera
