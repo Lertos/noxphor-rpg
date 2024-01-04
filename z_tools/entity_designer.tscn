@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=12 format=3 uid="uid://c40ainbadxewg"]
 
 [ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
 [ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
@@ -9,15 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bxyk5xo7fuf4u" path="res://art/icons/combat_indicator_3.png" id="6_agv8l"]
 [ext_resource type="Texture2D" uid="uid://cq1d4fuxtdfpg" path="res://art/icons/combat_indicator_4.png" id="7_kyaoc"]
 [ext_resource type="Texture2D" uid="uid://c123422ugvkc5" path="res://art/icons/combat_indicator_5.png" id="7_se20q"]
-[ext_resource type="Theme" uid="uid://cggt1e0d7c7g1" path="res://resources/themes/green_button.tres" id="9_e5qki"]
-[ext_resource type="Theme" uid="uid://cx7ksvlg01q11" path="res://resources/themes/red_button.tres" id="10_01xar"]
-[ext_resource type="Theme" uid="uid://i485kwjde8nr" path="res://resources/themes/orange_button.tres" id="11_rn1vu"]
+[ext_resource type="Theme" uid="uid://b4qn75pvlpxbw" path="res://resources/themes/black_button.tres" id="10_tiyls"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vau1"]
-bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rjcd"]
-border_color = Color(0.8, 0.8, 0.8, 0)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wch6e"]
 
 [node name="EntityDesigner" type="Control"]
 layout_mode = 3
@@ -55,7 +49,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="TabContainer" type="TabContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1vau1")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wch6e")
 
 [node name="Characters" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer"]
 layout_mode = 2
@@ -68,9 +62,26 @@ script = ExtResource("3_nws0a")
 [node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters"]
 layout_mode = 2
 
+[node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filter" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter"]
+layout_mode = 2
+placeholder_text = "Search a Character ID"
+
+[node name="CharacterList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="Left" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.2
 
 [node name="ID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left"]
 layout_mode = 2
@@ -209,72 +220,36 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
-theme_override_constants/separation = 20
+theme_override_constants/separation = 30
 alignment = 2
 
 [node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_e5qki")
+theme = ExtResource("10_tiyls")
 text = "Save"
 
 [node name="Update" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("11_rn1vu")
+theme = ExtResource("10_tiyls")
 text = "Update"
 
 [node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("10_01xar")
+theme = ExtResource("10_tiyls")
 text = "Delete"
 
 [node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_right = 24
 
-[node name="Panel" type="Panel" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/M"]
-custom_minimum_size = Vector2(4, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7rjcd")
-
-[node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Filter" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter"]
-layout_mode = 2
-placeholder_text = "Search a Character ID"
-
-[node name="CharacterList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Panel" type="Panel" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/M"]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7rjcd")
-
-[node name="Other" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right"]
-layout_mode = 2
-size_flags_vertical = 3
-
+[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_search_bar_text_changed"]
+[connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_character_list_item_clicked"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="add"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="update"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
-[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_search_bar_text_changed"]
-[connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_character_list_item_clicked"]
