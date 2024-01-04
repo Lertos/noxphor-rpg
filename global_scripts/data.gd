@@ -3,7 +3,7 @@ extends Node
 enum TYPE {CHARACTER, QUESTS, FACTS, DIALOGUE}
 enum REVEAL_SPEED {SLOW, MID, FAST}
 
-const debug = true
+const debug = false
 
 var reveal_speed: float
 
@@ -30,9 +30,19 @@ var files = {
 			#TODO: This is temporary
 			"fred_turner": {
 				"001": {
-					"see_once": true,
-					"has_seen": false,
-					"next": "002",
+					"reqs": [
+						{
+							"fact_id": "quest_chest_opener",
+							"operator": "=",
+							"value": "-1"
+						},
+						{
+							"fact_id": "met_fred_turner",
+							"operator": "=",
+							"value": "-1"
+						}
+					],
+					"next": "003",
 					"text": [
 						{
 							"speaker": "you", 
@@ -50,32 +60,50 @@ var files = {
 							"speaker": "fred_turner", 
 							"text": "Hell no."
 						}
+					],
+					"commands": [
+						"fact set met_fred_turner 1"
 					]
 				},
 				"002": {
+					"reqs": [
+						{
+							"fact_id": "quest_chest_opener",
+							"operator": "=",
+							"value": "-1"
+						},
+						{
+							"fact_id": "met_fred_turner",
+							"operator": "<>",
+							"value": "-1"
+						}
+					],
+					"next": "003",
+					"text": [
+						{
+							"speaker": "fred_turner", 
+							"text": "You again... I told you I don't have any quests."
+						}
+					]
+				},
+				"003": {
 					"options": [
 						{
 							"text": "Threaten until he gives a quest",
-							"next": "003",
-							"commands": [
-								"modify_disposition fred_turner -10"
-							]
+							"next": "004"
 						},
 						{
 							"text": "Ask nicely, winking at him at the end",
-							"next": "004",
-							"commands": [
-								"modify_disposition fred_turner 10"
-							]
+							"next": "005"
 						},
 						{
 							"text": "Leave, you didn't want a stupid quest anyways",
 						}
 					]
 				},
-				"003": {
+				"004": {
 					"commands": [
-						"start_quest chest_opener"
+						"fact set quest_chest_opener 1"
 					],
 					"text": [
 						{
@@ -88,9 +116,9 @@ var files = {
 						}
 					]
 				},
-				"004": {
+				"005": {
 					"commands": [
-						"start_quest chest_opener"
+						"fact set quest_chest_opener 1"
 					],
 					"text": [
 						{
@@ -108,6 +136,62 @@ var files = {
 						{
 							"speaker": "fred_turner", 
 							"text": "Hopefully not too soon..."
+						}
+					]
+				},
+				"006": {
+					"reqs": [
+						{
+							"fact_id": "quest_chest_opener",
+							"operator": "=",
+							"value": "2"
+						},
+					],
+					"commands": [
+						"fact set quest_chest_opener 0"
+					],
+					"text": [
+						{
+							"speaker": "fred_turner", 
+							"text": "Oh my goodness! You actually did it! You opened a chest! You are a hero! Now leave me alone."
+						},
+						{
+							"speaker": "you", 
+							"text": "I mean, us adventurers need to start somewhere."
+						},
+						{
+							"speaker": "", 
+							"text": "He clearly has seen many of your type and wants you to go away."
+						}
+					]
+				},
+				"007": {
+					"reqs": [
+						{
+							"fact_id": "quest_chest_opener",
+							"operator": "=",
+							"value": "0"
+						},
+					],
+					"text": [
+						{
+							"speaker": "fred_turner", 
+							"text": "Please leave me be."
+						}
+					]
+				},
+				"008": {
+					"reqs": [
+						{
+							"fact_id": "quest_chest_opener",
+							"operator": "=",
+							"value": "1"
+						},
+					],
+					"text": [
+						{
+							"speaker": "fred_turner", 
+							"text": "Go open the chest. I assume that shouldn't be too much trouble."
 						}
 					]
 				}

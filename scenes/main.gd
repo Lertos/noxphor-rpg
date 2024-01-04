@@ -56,7 +56,7 @@ func handle_interact_event(entity_id: String, chosen_option: String):
 		States.change_state(States.STATE.IN_MENU, "chat")
 		
 		#TODO: Once reqs are figured out, remove the "001" as it's a test value
-		Nodes.Dialogue.load_dialogue(entity_id, "001")
+		Nodes.Dialogue.load_dialogue(entity_id)
 
 	#Here simply to make sure popups don't trap people, but will also raise an error to let you know
 	else:

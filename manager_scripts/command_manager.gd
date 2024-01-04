@@ -17,11 +17,11 @@ const commands = {
 }
 
 #A command string, such as "fact set <fact_id> <value>" is broken down and sent to the proper function
-func execute(event_id: String):
-	var event_parts = event_id.split(SEPARATOR)
+func execute(command: String):
+	var event_parts = command.split(SEPARATOR)
 
 	if not commands.has(event_parts[0]):
-		print("command_manager.gd - A bad event call was made (no existing parent key): " + event_id)
+		print("command_manager.gd - A bad event call was made (no existing parent key): " + command)
 		return
 		
 	var current_value = commands[event_parts[0]]
@@ -30,13 +30,13 @@ func execute(event_id: String):
 	for index in range(1, event_parts.size()):
 		#Check that the value is a proper type 
 		if not (current_value is Dictionary or current_value is String):
-			print("command_manager.gd - A bad event call was made (a child key has the wrong type): " + event_id)
+			print("command_manager.gd - A bad event call was made (a child key has the wrong type): " + command)
 			return
 
 		#If the current value is a dictionary, get the new value
 		if current_value is Dictionary:
 			if not current_value.has(event_parts[index]):
-				print("command_manager.gd - A bad event call was made (no existing child key): " + event_id)
+				print("command_manager.gd - A bad event call was made (no existing child key): " + command)
 				return
 
 			current_value = current_value[event_parts[index]]
@@ -60,4 +60,4 @@ func call_method(func_name: String, remaining_parts := []):
 		assert(false, "command_manager.gd - call_method - No method exists with the name: " + func_name)
 
 func set_fact(params: Array):
-	print("From set_fact")
+	Nodes.Facts.set_fact(params[0], params[1])

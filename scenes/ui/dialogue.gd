@@ -24,7 +24,7 @@ func _init(character_id: String, dialogue_id: String, dialogue_dict: Dictionary)
 	if dialogue_dict.has("commands"):
 		self.commands = dialogue_dict["commands"]
 
-	_to_string()
+	#_to_string()
 
 func _to_string():
 	print()

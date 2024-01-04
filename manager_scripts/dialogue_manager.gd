@@ -45,20 +45,14 @@ func load_most_viable_dialogue(character_id: String) -> Dictionary:
 	
 	for dialogue in char_dialogue:
 		var dict = char_dialogue[dialogue]
-		
-		#Check if this should be ignored based on being disabled
-		if dict.has("disabled") and dict["disabled"] == true:
+
+		#If the dialogue doesn't have a "reqs" key, it shouldn't be considered
+		if not dict.has("reqs"):
 			continue
 		
-		#Check if this should be ignored based on seeing it once
-		if dict.has("see_once") and dict["see_once"] == true:
-			if dict.has("has_seen") and dict["has_seen"] == true:
-				continue
-		
 		#Check if this should be ignored based on missing requirements
-		if dict.has("reqs"):
-			if not meets_requirements(dict["reqs"]):
-				continue
+		if not meets_requirements(dict["reqs"]):
+			continue
 				
 		#If it makes it here, it's a valid dialogue, add it
 		viable_dialogue.append(dialogue)
@@ -77,15 +71,19 @@ func get_highest_reqs_dialogue(char_dialogue: Dictionary, viable_dialogue: Array
 		var dialogue_id = viable_dialogue[index]
 		var dict = char_dialogue[dialogue_id]
 		
-		if dict.has("reqs"):
-			if dict["reqs"].size() > highest_reqs:
-				highest_reqs = dict["reqs"].size()
-				chosen_dialogue_id = dialogue_id
+		if dict["reqs"].size() > highest_reqs:
+			highest_reqs = dict["reqs"].size()
+			chosen_dialogue_id = dialogue_id
 
 	return char_dialogue[chosen_dialogue_id]
 
-#TODO: Logic to check each req
-func meets_requirements(rect_dict: Dictionary) -> bool:
+func meets_requirements(reqs_arr: Array) -> bool:
+	for index in range(0, reqs_arr.size()):
+		var dict = reqs_arr[index]
+		
+		if not Nodes.Facts.is_fact_true(dict["fact_id"], dict["operator"], dict["value"]):
+			return false
+	
 	return true
 
 #Create the Dialogue object and send it to the ChatWindow
@@ -98,8 +96,6 @@ func create_dialogue(character_id: String, dialogue_id: String, dialogue_dict: D
 	chat_window.send_message(dialogue)
 
 func finish_dialogue(dialogue: Dialogue):
-	print("Dialogue finished")
-
 	if not dialogue.commands.is_empty():
 		execute_commands(dialogue.commands)
 	
@@ -112,7 +108,7 @@ func finish_dialogue(dialogue: Dialogue):
 
 func execute_commands(commands: Array):
 	for command in commands:
-		print(command)
+		Nodes.Command.execute(command)
 
 func handle_dialogue_option(dialogue: Dialogue, index: int):
 	if index >= dialogue.dialogue_options.size():
