@@ -1,9 +1,10 @@
 extends Node
 
-enum TOOL {ENTITY_DESIGNER}
+enum TOOL {ENTITY_DESIGNER, FACT_EDITOR}
 
 const tool_resources: Dictionary = {
-	TOOL.ENTITY_DESIGNER: "res://z_tools/entity_designer.tscn"
+	TOOL.ENTITY_DESIGNER: "res://z_tools/entity_designer.tscn",
+	TOOL.FACT_EDITOR: "res://z_tools/fact_editor.tscn"
 }
 
 const tool_scene_name: String = "current_tool"
@@ -18,6 +19,8 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_F1:
 			open_tool(TOOL.ENTITY_DESIGNER)
+		elif event.pressed and event.keycode == KEY_F2:
+			open_tool(TOOL.FACT_EDITOR)
 
 func open_tool(tool_enum: TOOL):
 	var resource_path: String = tool_resources[tool_enum]
