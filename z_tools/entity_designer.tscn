@@ -385,6 +385,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 placeholder_text = "set_fact introduced 1
 set_fact quest_the_sword 0"
+editable = false
 wrap_mode = 1
 
 [node name="Reqs" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
@@ -415,8 +416,9 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "set_fact introduced 1
-set_fact quest_the_sword 0"
+placeholder_text = "introduced = 1
+quest_the_sword <> 0"
+editable = false
 wrap_mode = 1
 
 [node name="Dialogue" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
@@ -447,8 +449,9 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "set_fact introduced 1
-set_fact quest_the_sword 0"
+placeholder_text = "fred_turner: How dare you!
+you: But I must"
+editable = false
 wrap_mode = 1
 
 [node name="Options" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
@@ -480,8 +483,9 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "set_fact introduced 1
-set_fact quest_the_sword 0"
+placeholder_text = "1. I dont like that
+2. You should go away"
+editable = false
 wrap_mode = 1
 
 [node name="Buttons" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
