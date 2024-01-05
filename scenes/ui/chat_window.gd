@@ -64,20 +64,25 @@ func show_normal_dialogue():
 		
 		dialogue_dict = text_arr[current_dialogue_index]
 		
+		var extra_bbcode = ""
+		
 		if dialogue_dict.has("speaker"):
 			var speaker_id = dialogue_dict["speaker"]
-
+			
 			#The narrator / flavor text
 			if speaker_id == "":
 				$Background/Name.visible = false
+				extra_bbcode = "color=yellow"
 			elif speaker_id == "you":
 				$Background/Name.visible = true
 				set_dialogue_name("You")
+				extra_bbcode = "color=lightgreen"
 			else:
 				$Background/Name.visible = true
 				set_dialogue_name(Data.get_value(Data.TYPE.CHARACTER, current_dialogue.character_id)["name"])
+				extra_bbcode = "color=lightblue"
 
-		set_dialogue_text(dialogue_dict["text"])
+		set_dialogue_text(dialogue_dict["text"], extra_bbcode)
 		
 	#If the dialogue is over, check for commands and the next dialogue to goto
 	else:
@@ -111,8 +116,19 @@ func switch_option(index: int):
 		label.text = "[color=green]" + label.text + "[/color]"
 		current_chosen_option_index = index
 
-func set_dialogue_text(text: String):
-	dialogue_label.text = text
+func set_dialogue_text(text: String, extra_bbcode := ""):
+	var prefix = ""
+	var suffix = ""
+	
+	if extra_bbcode != "":
+		prefix = "[" + extra_bbcode + "]"
+		
+		if extra_bbcode.find("=") != -1:
+			suffix = "[/" + extra_bbcode.left(extra_bbcode.find("=")) + "]"
+		else:
+			suffix = "[/" + extra_bbcode + "]"
+
+	dialogue_label.text = prefix + text + suffix
 	dialogue_label.visible_ratio = 0
 	
 	var time = dialogue_label.text.length() / Data.reveal_speed
@@ -132,7 +148,10 @@ func set_dialogue_name(char_name: String):
 		$Background/Name.size.x = name_length + $Background/Name/Margin.get_theme_constant("margin_left") * 2
 	
 	#Add the "center" BBCode back in the center the name
-	name_label.text = "[center]" + char_name + "[/center]"
+	if char_name.to_lower() == "you":
+		name_label.text = "[center][color=green]" + char_name + "[/color][/center]"
+	else:
+		name_label.text = "[center][color=aqua]" + char_name + "[/color][/center]"
 
 func show_continue():
 	$Background/Continue.position = initial_continue_pos

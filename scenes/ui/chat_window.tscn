@@ -93,7 +93,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme = ExtResource("3_kebkh")
 bbcode_enabled = true
-text = "[center]Templeton[/center]"
+text = "[color=light]Templeton[/color]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
