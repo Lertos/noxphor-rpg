@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=13 format=3 uid="uid://c40ainbadxewg"]
 
 [ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
 [ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cq1d4fuxtdfpg" path="res://art/icons/combat_indicator_4.png" id="7_kyaoc"]
 [ext_resource type="Texture2D" uid="uid://c123422ugvkc5" path="res://art/icons/combat_indicator_5.png" id="7_se20q"]
 [ext_resource type="Theme" uid="uid://b4qn75pvlpxbw" path="res://resources/themes/black_button.tres" id="10_tiyls"]
+[ext_resource type="Script" path="res://z_tools/dialogue.gd" id="11_d58dd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wch6e"]
 
@@ -250,6 +251,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("11_d58dd")
 
 [node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue"]
 layout_mode = 2
@@ -291,6 +293,7 @@ size_flags_vertical = 3
 [node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter"]
 layout_mode = 2
 placeholder_text = "Search a Dialogue ID"
+editable = false
 
 [node name="DialogueList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter"]
 layout_mode = 2
@@ -302,17 +305,34 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.2
 theme_override_constants/separation = 10
 
-[node name="ID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+[node name="CharID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/ID"]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/CharID"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "ID"
+text = "Character ID *"
 horizontal_alignment = 2
 
-[node name="ID" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/ID"]
+[node name="CharID" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/CharID"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Select a character from the left"
+editable = false
+
+[node name="DialogueID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/DialogueID"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dialogue ID *"
+horizontal_alignment = 2
+
+[node name="DialogueID" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/DialogueID"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -434,7 +454,7 @@ alignment = 1
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Dialogue"
+text = "Dialogue *"
 horizontal_alignment = 2
 
 [node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H"]
@@ -445,12 +465,11 @@ theme = ExtResource("10_tiyls")
 text = "Add"
 
 [node name="Dialogue" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "fred_turner: How dare you!
-you: But I must"
+placeholder_text = "Hover to see dialogue"
 editable = false
 wrap_mode = 1
 
@@ -468,7 +487,7 @@ alignment = 1
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Options"
+text = "Options *"
 horizontal_alignment = 2
 
 [node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H"]
@@ -479,12 +498,11 @@ theme = ExtResource("10_tiyls")
 text = "Add"
 
 [node name="Options" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "1. I dont like that
-2. You should go away"
+placeholder_text = "Hover to see options"
 editable = false
 wrap_mode = 1
 
@@ -517,9 +535,5 @@ theme_override_constants/margin_right = 24
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_character_list_item_clicked"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="save_character"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
-[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_search_bar_text_changed"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
-[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_search_bar_text_changed"]
-[connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/DialogueList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="save_character"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="delete"]
+[connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type/Type" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_type_changed"]
