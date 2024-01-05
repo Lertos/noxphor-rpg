@@ -50,8 +50,10 @@ theme_override_constants/margin_bottom = 8
 [node name="TabContainer" type="TabContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wch6e")
+current_tab = 1
 
 [node name="Characters" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -242,7 +244,278 @@ text = "Delete"
 layout_mode = 2
 theme_override_constants/margin_right = 24
 
+[node name="Dialogue" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Searches" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CharSearch" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Filter" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter"]
+layout_mode = 2
+placeholder_text = "Search a Character ID"
+
+[node name="CharacterList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogueSearch" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Filter" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter"]
+layout_mode = 2
+placeholder_text = "Search a Dialogue ID"
+
+[node name="DialogueList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Fields" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.2
+theme_override_constants/separation = 10
+
+[node name="ID" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/ID"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ID"
+horizontal_alignment = 2
+
+[node name="ID" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/ID"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "001"
+
+[node name="Next" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Next"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+horizontal_alignment = 2
+
+[node name="Next" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Next"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "002"
+
+[node name="Type" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dialogue Type"
+horizontal_alignment = 2
+
+[node name="Type" type="OptionButton" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+item_count = 2
+selected = 0
+popup/item_0/text = "Normal Dialogue"
+popup/item_0/id = 0
+popup/item_1/text = "Options"
+popup/item_1/id = 1
+
+[node name="Commands" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Commands"
+horizontal_alignment = 2
+
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands/H"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Add"
+
+[node name="Commands" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "set_fact introduced 1
+set_fact quest_the_sword 0"
+wrap_mode = 1
+
+[node name="Reqs" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reqs"
+horizontal_alignment = 2
+
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs/H"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Add"
+
+[node name="Reqs" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "set_fact introduced 1
+set_fact quest_the_sword 0"
+wrap_mode = 1
+
+[node name="Dialogue" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dialogue"
+horizontal_alignment = 2
+
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Add"
+
+[node name="Dialogue" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "set_fact introduced 1
+set_fact quest_the_sword 0"
+wrap_mode = 1
+
+[node name="Options" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+horizontal_alignment = 2
+
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Add"
+
+[node name="Options" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "set_fact introduced 1
+set_fact quest_the_sword 0"
+wrap_mode = 1
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 30
+alignment = 2
+
+[node name="Save" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Save"
+
+[node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Delete"
+
+[node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H"]
+layout_mode = 2
+theme_override_constants/margin_right = 24
+
 [connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_search_bar_text_changed"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_character_list_item_clicked"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="save_character"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
+[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_search_bar_text_changed"]
+[connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
+[connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_search_bar_text_changed"]
+[connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/DialogueList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="save_character"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="delete"]
