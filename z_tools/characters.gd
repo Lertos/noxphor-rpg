@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Node
 
 @onready var f_name = $H/Left/Name/Name
 @onready var f_id = $H/Left/ID/ID
@@ -16,7 +16,7 @@ func _ready():
 	reset_character_list("")
 
 func save_character():
-	if not validate_shared():
+	if not validate():
 		return
 
 	var already_exists = Data.exists(DATA_TYPE, f_id.text)
@@ -40,7 +40,7 @@ func delete():
 			list_characters.remove_item(index)
 			break
 
-func validate_shared() -> bool:
+func validate() -> bool:
 	var alert_message = ""
 	
 	#Make sure crucial fields are not blank
