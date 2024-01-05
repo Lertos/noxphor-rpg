@@ -223,19 +223,12 @@ size_flags_vertical = 10
 theme_override_constants/separation = 30
 alignment = 2
 
-[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
+[node name="Save" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("10_tiyls")
 text = "Save"
-
-[node name="Update" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("10_tiyls")
-text = "Update"
 
 [node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons"]
 layout_mode = 2
@@ -250,6 +243,5 @@ theme_override_constants/margin_right = 24
 
 [connection signal="text_changed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/SearchBar" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_search_bar_text_changed"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_character_list_item_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="add"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="update"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="save_character"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]

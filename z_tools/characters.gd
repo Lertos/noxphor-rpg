@@ -15,30 +15,17 @@ const DATA_TYPE = Data.TYPE.CHARACTER
 func _ready():
 	reset_character_list("")
 
-func add():
+func save_character():
 	if not validate_shared():
 		return
-		
-	#Make sure the ID doesn't already exist
-	if Data.exists(DATA_TYPE, f_id.text):
-		print("That character ID already exists. Perhaps you meant to 'Update' it?")
-		return
-	
-	Data.save_key(DATA_TYPE, get_character_dict(), f_id.text)
-	
-	list_characters.add_item(f_id.text)
-	list_characters.sort_items_by_text()
 
-func update():
-	if not validate_shared():
-		return
-		
-	#Make sure the ID actually exists
-	if not Data.exists(DATA_TYPE, f_id.text):
-		print("That character ID doesn't exist. Perhaps you meant to 'Add' it?")
-		return
-		
+	var already_exists = Data.exists(DATA_TYPE, f_id.text)
+
 	Data.save_key(DATA_TYPE, get_character_dict(), f_id.text)
+	
+	if not already_exists:
+		list_characters.add_item(f_id.text)
+		list_characters.sort_items_by_text()
 
 func delete():
 	#Make sure the ID actually exists

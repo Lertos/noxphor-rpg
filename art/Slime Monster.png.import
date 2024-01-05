@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r7tqljrwvqgm"
-path="res://.godot/imported/Cave Floor B.png-05bb6588d3a79dbf754c22eb5e07d25d.ctex"
+uid="uid://dwf1amihcngqk"
+path="res://.godot/imported/Slime Monster.png-dceb24a759afb0bd315d45f69f445dbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tilesets/Cave Floor B.png"
-dest_files=["res://.godot/imported/Cave Floor B.png-05bb6588d3a79dbf754c22eb5e07d25d.ctex"]
+source_file="res://art/Slime Monster.png"
+dest_files=["res://.godot/imported/Slime Monster.png-dceb24a759afb0bd315d45f69f445dbe.ctex"]
 
 [params]
 

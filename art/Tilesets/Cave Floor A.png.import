@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck23ca1rfisvh"
-path="res://.godot/imported/Cave Floor A.png-444ca4d94edbc301b43da3b70b68a8c8.ctex"
+path="res://.godot/imported/Cave Floor A.png-fa90c9d6452da2369f138bedb0e0df5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Tilesets/Cave Floor A.png"
-dest_files=["res://.godot/imported/Cave Floor A.png-444ca4d94edbc301b43da3b70b68a8c8.ctex"]
+source_file="res://art/tilesets/Cave Floor A.png"
+dest_files=["res://.godot/imported/Cave Floor A.png-fa90c9d6452da2369f138bedb0e0df5a.ctex"]
 
 [params]
 
