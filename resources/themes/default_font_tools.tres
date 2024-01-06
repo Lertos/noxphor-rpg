@@ -1,7 +1,19 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjnfw2l6vr8ob"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cjnfw2l6vr8ob"]
 
 [ext_resource type="FontFile" uid="uid://decoby7sxowi2" path="res://toxigenesis.otf" id="1_lwhwn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukdvi"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [resource]
 default_font = ExtResource("1_lwhwn")
 default_font_size = 16
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_ukdvi")
