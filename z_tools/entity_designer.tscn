@@ -536,4 +536,5 @@ theme_override_constants/margin_right = 24
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="save_character"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
+[connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/DialogueList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_dialogue_list_item_clicked"]
 [connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type/Type" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_type_changed"]

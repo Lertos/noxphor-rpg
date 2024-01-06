@@ -2,6 +2,7 @@ extends Node
 
 @onready var f_char_id = $H/Fields/CharID/CharID
 @onready var f_dialogue_id = $H/Fields/DialogueID/DialogueID
+@onready var f_next_id = $H/Fields/Next/Next
 @onready var f_type = $H/Fields/Type/Type
 @onready var f_commands = $H/Fields/Commands/Commands
 @onready var f_reqs = $H/Fields/Reqs/Reqs
@@ -17,6 +18,15 @@ const CHAR_DATA_TYPE = Data.TYPE.CHARACTER
 const DIALOGUE_DATA_TYPE = Data.TYPE.DIALOGUE
 
 enum DIALOGUE_TYPE {NORMAL, OPTIONS}
+
+#Holds each command as a single String since every command can be a little different
+var commands = []
+#Holds each req as a dict: { "fact": "", "operator": "", "value": "" }
+var reqs = []
+#Holds each dialogue as a dict: { "speaker": "", "text": "" }
+var dialogue = []
+#Holds each option as a dict: { "text": "", "next": "", "commands" : [] }
+var options = []
 
 func _ready():
 	reset_character_list("")
@@ -133,10 +143,94 @@ func on_character_list_item_clicked(index, at_position, mouse_button_index):
 	if not Data.exists(CHAR_DATA_TYPE, char_id):
 		print("That character ID does not exist in the data dict")
 		return
-
+	
 	f_char_id.text = char_id
 	dialogue_search_bar.editable = true
+	
 	reset_dialogue_list("")
+
+func on_dialogue_list_item_clicked(index, at_position, mouse_button_index):
+	var char_id = f_char_id.text
+	
+	if char_id == null or char_id == "":
+		print("The character ID is blank so the Dialogue cannot be loaded")
+		return
+	
+	if not Data.exists(CHAR_DATA_TYPE, char_id):
+		print("That character ID does not exist in the data dict")
+		return
+	
+	var dialogue_id = list_dialogue.get_item_text(index)
+	
+	if not Data.get_entire_dict(DIALOGUE_DATA_TYPE)[char_id].has(dialogue_id):
+		print("That dialogue ID does not exist in the data dict")
+		return
+	
+	f_dialogue_id.text = dialogue_id
+	
+	load_dialogue_fields(Data.get_entire_dict(DIALOGUE_DATA_TYPE)[char_id][dialogue_id])
+
+func set_textfield_text(field: TextEdit, text: String):
+	field.text += text + "\n"
+	field.tooltip_text += text + "\n\n"
+
+func reset_textfield(field: TextEdit):
+	field.text = ""
+	field.tooltip_text = ""
+
+func load_dialogue_fields(dict: Dictionary):
+	#First choose the type based on whether the dict has the "options" key
+	f_type.select(DIALOGUE_TYPE.OPTIONS if dict.has("options") else DIALOGUE_TYPE.NORMAL)
+	f_next_id.text = dict["next"] if dict.has("next") else ""
+	
+	#Reset each of the textboxes as they are appended to
+	reset_textfield(f_commands)
+	reset_textfield(f_reqs)
+	reset_textfield(f_dialogue)
+	reset_textfield(f_options)
+	
+	#Load each command in the text and hint variables so they can preview and hover for details
+	if dict.has("commands"):
+		commands = dict["commands"]
+		
+		#Then load all of the text so the person can see a preview
+		for index in range(0, commands.size()):
+			set_textfield_text(f_commands, commands[index])
+	
+	#Load each req in the text and hint variables so they can preview and hover for details
+	if dict.has("reqs"):
+		reqs = dict["reqs"]
+		
+		#Then load all of the text so the person can see a preview
+		for index in range(0, reqs.size()):
+			var req_line = reqs[index]["fact_id"] + " " + reqs[index]["operator"] + " " + reqs[index]["value"]
+			
+			set_textfield_text(f_reqs, req_line)
+	
+	#Load either the text or options. We don't load the text as it's always too much to see; let them hover
+	if dict.has("options"):
+		options = dict["options"]
+		
+		#Then load all of the text so the person can see a preview
+		for index in range(0, options.size()):
+			var option_line = options[index]["text"] + (" -> " + options[index]["next"] if options[index].has("next") else "")
+			
+			f_options.tooltip_text += option_line + "\n\n"
+	else:
+		dialogue = dict["text"]
+		
+		#Then load all of the text so the person can see a preview
+		for index in range(0, dialogue.size()):
+			var speaker
+			
+			match dialogue[index]["speaker"]:
+				"": speaker = "Narrator: "
+				"you": speaker = "YOU: "
+				_: speaker = dialogue[index]["speaker"] + ": "
+				
+			var dialogue_line = speaker + dialogue[index]["text"]
+			
+			f_dialogue.tooltip_text += dialogue_line + "\n\n"
 
 func on_type_changed(index):
 	if index == DIALOGUE_TYPE.NORMAL:
