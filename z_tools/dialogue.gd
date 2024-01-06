@@ -180,7 +180,11 @@ func reset_textfield(field: TextEdit):
 
 func load_dialogue_fields(dict: Dictionary):
 	#First choose the type based on whether the dict has the "options" key
-	f_type.select(DIALOGUE_TYPE.OPTIONS if dict.has("options") else DIALOGUE_TYPE.NORMAL)
+	var type_selected = DIALOGUE_TYPE.OPTIONS if dict.has("options") else DIALOGUE_TYPE.NORMAL
+	
+	f_type.select(type_selected)
+	on_type_changed(type_selected)
+	
 	f_next_id.text = dict["next"] if dict.has("next") else ""
 	
 	#Reset each of the textboxes as they are appended to
@@ -213,7 +217,8 @@ func load_dialogue_fields(dict: Dictionary):
 		
 		#Then load all of the text so the person can see a preview
 		for index in range(0, options.size()):
-			var option_line = options[index]["text"] + (" -> " + options[index]["next"] if options[index].has("next") else "")
+			var next = " -> " + options[index]["next"] if options[index].has("next") else ""
+			var option_line = options[index]["text"] + next
 			
 			f_options.tooltip_text += option_line + "\n\n"
 	else:
@@ -227,10 +232,8 @@ func load_dialogue_fields(dict: Dictionary):
 				"": speaker = "Narrator: "
 				"you": speaker = "YOU: "
 				_: speaker = dialogue[index]["speaker"] + ": "
-				
-			var dialogue_line = speaker + dialogue[index]["text"]
 			
-			f_dialogue.tooltip_text += dialogue_line + "\n\n"
+			f_dialogue.tooltip_text += speaker + dialogue[index]["text"] + "\n\n"
 
 func on_type_changed(index):
 	if index == DIALOGUE_TYPE.NORMAL:
