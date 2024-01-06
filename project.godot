@@ -38,6 +38,7 @@ project/assembly_name="noxphor-rpg"
 [gui]
 
 theme/default_font_generate_mipmaps=true
+timers/tooltip_delay_sec=0.3
 
 [input]
 
