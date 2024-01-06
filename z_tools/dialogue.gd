@@ -218,7 +218,7 @@ func load_dialogue_fields(dict: Dictionary):
 		#Then load all of the text so the person can see a preview
 		for index in range(0, options.size()):
 			var next = " -> " + options[index]["next"] if options[index].has("next") else ""
-			var option_line = options[index]["text"] + next
+			var option_line = str(index + 1) + ". " + options[index]["text"] + next
 			
 			f_options.tooltip_text += option_line + "\n\n"
 	else:
