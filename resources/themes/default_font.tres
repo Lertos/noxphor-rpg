@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d4mq7hy6287jn"]
 
-[ext_resource type="FontFile" uid="uid://c6330obf6tkj4" path="res://5₧5.ttf" id="1_pbopc"]
+[ext_resource type="FontFile" uid="uid://c6330obf6tkj4" path="res://resources/fonts/5₧5.ttf" id="1_pbopc"]
 
 [resource]
 line_spacing = 0.0

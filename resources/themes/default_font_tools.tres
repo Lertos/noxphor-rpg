@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://cjnfw2l6vr8ob"]
 
-[ext_resource type="FontFile" uid="uid://decoby7sxowi2" path="res://toxigenesis.otf" id="1_lwhwn"]
+[ext_resource type="FontFile" uid="uid://decoby7sxowi2" path="res://resources/fonts/toxigenesis.otf" id="1_lwhwn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukdvi"]
 content_margin_left = 12.0

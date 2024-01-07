@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://decoby7sxowi2"
-path="res://.godot/imported/toxigenesis.otf-0b886fc28c362ec613a0223fe2d04283.fontdata"
+path="res://.godot/imported/toxigenesis.otf-c52a316649bcdd434093f162fcfba712.fontdata"
 
 [deps]
 
-source_file="res://toxigenesis.otf"
-dest_files=["res://.godot/imported/toxigenesis.otf-0b886fc28c362ec613a0223fe2d04283.fontdata"]
+source_file="res://resources/fonts/toxigenesis.otf"
+dest_files=["res://.godot/imported/toxigenesis.otf-c52a316649bcdd434093f162fcfba712.fontdata"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dimha64wmr1p8"]
 
-[ext_resource type="FontFile" uid="uid://osy8phrwma56" path="res://PressStart2P.ttf" id="1_y43jj"]
+[ext_resource type="FontFile" uid="uid://osy8phrwma56" path="res://resources/fonts/PressStart2P.ttf" id="1_y43jj"]
 
 [resource]
 default_font = ExtResource("1_y43jj")
