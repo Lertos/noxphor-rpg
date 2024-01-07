@@ -242,3 +242,10 @@ func on_type_changed(index):
 	else:
 		f_options.get_parent().visible = true
 		f_dialogue.get_parent().visible = false
+
+
+func on_edit_commands_pressed():
+	if f_char_id.text == "":
+		return
+		
+	$CommandEditor.open(commands)

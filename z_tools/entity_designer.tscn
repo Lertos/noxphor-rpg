@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=15 format=3 uid="uid://c40ainbadxewg"]
 
 [ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
 [ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c123422ugvkc5" path="res://art/icons/combat_indicator_5.png" id="7_se20q"]
 [ext_resource type="Theme" uid="uid://b4qn75pvlpxbw" path="res://resources/themes/black_button.tres" id="10_tiyls"]
 [ext_resource type="Script" path="res://z_tools/dialogue.gd" id="11_d58dd"]
+[ext_resource type="Script" path="res://z_tools/popups/command_editor.gd" id="12_dar82"]
+[ext_resource type="Theme" uid="uid://b3ohyqv6y6nwv" path="res://resources/themes/popup.tres" id="12_nmyyw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wch6e"]
 
@@ -253,6 +255,89 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("11_d58dd")
 
+[node name="CommandEditor" type="PopupPanel" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue"]
+title = "Command Editor"
+position = Vector2i(0, 36)
+size = Vector2i(800, 500)
+visible = true
+borderless = false
+theme = ExtResource("12_nmyyw")
+script = ExtResource("12_dar82")
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 788.0
+offset_bottom = 488.0
+theme_override_constants/separation = 10
+
+[node name="CommandList" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H"]
+layout_mode = 2
+theme_override_constants/margin_right = 24
+
+[node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Fields" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Fields"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Command"
+horizontal_alignment = 1
+
+[node name="Command" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Fields"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "fact set quest_chest_opener 0"
+
+[node name="Spacer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 30
+alignment = 2
+
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Add"
+
+[node name="Update" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Update"
+
+[node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Delete"
+
+[node name="M2" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H"]
+layout_mode = 2
+theme_override_constants/margin_right = 24
+
 [node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue"]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -391,20 +476,18 @@ size_flags_horizontal = 3
 text = "Commands"
 horizontal_alignment = 2
 
-[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands/H"]
+[node name="Edit" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands/H"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = ExtResource("10_tiyls")
-text = "Add"
+text = "Edit"
 
 [node name="Commands" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "set_fact introduced 1
-set_fact quest_the_sword 0"
 editable = false
 wrap_mode = 1
 
@@ -424,20 +507,18 @@ size_flags_horizontal = 3
 text = "Reqs"
 horizontal_alignment = 2
 
-[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs/H"]
+[node name="Edit" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs/H"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = ExtResource("10_tiyls")
-text = "Add"
+text = "Edit"
 
 [node name="Reqs" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-placeholder_text = "introduced = 1
-quest_the_sword <> 0"
 editable = false
 wrap_mode = 1
 
@@ -457,12 +538,12 @@ size_flags_horizontal = 3
 text = "Dialogue *"
 horizontal_alignment = 2
 
-[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H"]
+[node name="Edit" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = ExtResource("10_tiyls")
-text = "Add"
+text = "Edit"
 
 [node name="Dialogue" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue"]
 custom_minimum_size = Vector2(0, 40)
@@ -490,12 +571,12 @@ size_flags_horizontal = 3
 text = "Options *"
 horizontal_alignment = 2
 
-[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H"]
+[node name="Edit" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = ExtResource("10_tiyls")
-text = "Add"
+text = "Edit"
 
 [node name="Options" type="TextEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options"]
 custom_minimum_size = Vector2(0, 40)
@@ -535,6 +616,12 @@ theme_override_constants/margin_right = 24
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Right/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="on_character_list_item_clicked"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Save" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="save_character"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Characters/H/Left/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Characters" method="delete"]
+[connection signal="popup_hide" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_popup_hide"]
+[connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/CommandList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_command_item_selected"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_add_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_update_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_delete_pressed"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/DialogueList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_dialogue_list_item_clicked"]
 [connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type/Type" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_type_changed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands/H/Edit" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_edit_commands_pressed"]
