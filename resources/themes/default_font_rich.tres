@@ -1,7 +1,9 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dimha64wmr1p8"]
 
-[ext_resource type="FontFile" uid="uid://c6330obf6tkj4" path="res://5₧5.ttf" id="1_sxgd8"]
+[ext_resource type="FontFile" uid="uid://osy8phrwma56" path="res://PressStart2P.ttf" id="1_y43jj"]
 
 [resource]
-default_font = ExtResource("1_sxgd8")
-default_font_size = 10
+default_font = ExtResource("1_y43jj")
+default_font_size = 8
+Label/constants/line_spacing = 0
+RichTextLabel/constants/line_separation = 1
