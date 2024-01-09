@@ -41,6 +41,8 @@ func on_add_pressed():
 			
 	commands.append(new_command)
 	list_commands.add_item(new_command)
+	
+	selected_index = list_commands.item_count - 1
 
 func on_update_pressed():
 	if selected_index >= commands.size():
@@ -52,7 +54,7 @@ func on_update_pressed():
 	list_commands.set_item_text(selected_index, f_command.text)
 
 func on_delete_pressed():
-	if selected_index >= commands.size():
+	if selected_index == -1 or selected_index >= commands.size():
 		print("The selected index no longer exists")
 		return
 		
