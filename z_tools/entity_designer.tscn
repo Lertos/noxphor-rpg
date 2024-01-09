@@ -337,6 +337,140 @@ text = "Delete"
 layout_mode = 2
 theme_override_constants/margin_right = 24
 
+[node name="ReqsEditor" type="PopupPanel" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue"]
+title = "Reqs Editor"
+position = Vector2i(0, 36)
+size = Vector2i(800, 500)
+visible = true
+borderless = false
+theme = ExtResource("12_nmyyw")
+script = ExtResource("12_dar82")
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 788.0
+offset_bottom = 488.0
+theme_override_constants/separation = 10
+
+[node name="Reqs" type="ItemList" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="M" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H"]
+layout_mode = 2
+theme_override_constants/margin_right = 24
+
+[node name="Right" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Fields" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Req" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Req"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Req *"
+horizontal_alignment = 2
+
+[node name="Req" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Req"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "quest_chest_opener"
+editable = false
+
+[node name="Operator" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Operator"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Operator *"
+horizontal_alignment = 2
+
+[node name="Operator" type="OptionButton" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Operator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+item_count = 6
+selected = 0
+popup/item_0/text = "="
+popup/item_0/id = 0
+popup/item_1/text = "<>"
+popup/item_1/id = 1
+popup/item_2/text = ">="
+popup/item_2/id = 2
+popup/item_3/text = "<="
+popup/item_3/id = 3
+popup/item_4/text = ">"
+popup/item_4/id = 4
+popup/item_5/text = "<"
+popup/item_5/id = 5
+
+[node name="Value" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Value"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Value *"
+horizontal_alignment = 2
+
+[node name="Value" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Value"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "1"
+editable = false
+
+[node name="Spacer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 30
+alignment = 2
+
+[node name="Add" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Add"
+
+[node name="Update" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Update"
+
+[node name="Delete" type="Button" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_tiyls")
+text = "Delete"
+
+[node name="M2" type="MarginContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H"]
+layout_mode = 2
+theme_override_constants/margin_right = 24
+
 [node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue"]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -620,6 +754,11 @@ theme_override_constants/margin_right = 24
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_add_pressed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_update_pressed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_delete_pressed"]
+[connection signal="popup_hide" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="_on_popup_hide"]
+[connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Reqs" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_command_item_selected"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_add_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_update_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_delete_pressed"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/CharSearch/Filter/CharacterList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_character_list_item_clicked"]
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/DialogueList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_dialogue_list_item_clicked"]
 [connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type/Type" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_type_changed"]
