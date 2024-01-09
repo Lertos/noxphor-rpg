@@ -41,10 +41,17 @@ func save_dialogue():
 	if Data.get_entire_dict(DIALOGUE_DATA_TYPE).has(f_char_id.text):
 		already_exists = Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text].has(f_dialogue_id.text)
 
-	Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text][f_dialogue_id.text] = get_dialogue_dict()
+	var new_dict = get_dialogue_dict()
+
+	Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text][f_dialogue_id.text] = new_dict
 	
 	if not already_exists:
-		list_dialogue.add_item(f_dialogue_id.text)
+		var display_text = f_dialogue_id.text
+		
+		if new_dict.has("next"):
+			display_text += " [next: " + new_dict["next"] + "]"
+		
+		list_dialogue.add_item(display_text)
 		list_dialogue.sort_items_by_text()
 
 func delete():
@@ -59,9 +66,17 @@ func delete():
 	Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text].erase(f_dialogue_id.text)
 	
 	for index in range(0, list_dialogue.item_count):
-		if list_dialogue.get_item_text(index) == f_dialogue_id.text:
+		var display_text = get_original_dialogue_id_text(list_dialogue.get_item_text(index))
+		
+		if display_text == f_dialogue_id.text:
 			list_dialogue.remove_item(index)
 			break
+
+func get_original_dialogue_id_text(text: String):
+	if " [next: " in text:
+		return text.left(text.find(" [next: "))
+
+	return text
 
 func validate() -> bool:
 	var alert_message = ""
@@ -117,13 +132,25 @@ func reset_dialogue_list(filter_text: String):
 	if not Data.get_entire_dict(DIALOGUE_DATA_TYPE).has(f_char_id.text):
 		return
 	
+	var dict = Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text]
+	
 	if filter_text == "":
-		for key in Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text].keys():
-			list_dialogue.add_item(key)
-	else:
-		for key in Data.get_entire_dict(DIALOGUE_DATA_TYPE)[f_char_id.text].keys():
-			if filter_text in key:
+		for key in dict.keys():
+			var sub_dict = dict[key]
+			
+			if sub_dict.has("next"):
+				list_dialogue.add_item(key + " [next: " + sub_dict["next"] + "]")
+			else:
 				list_dialogue.add_item(key)
+	else:
+		for key in dict.keys():
+			if filter_text in key:
+				var sub_dict = dict[key]
+				
+				if sub_dict.has("next"):
+					list_dialogue.add_item(key + " [next: " + sub_dict["next"] + "]")
+				else:
+					list_dialogue.add_item(key)
 		
 	list_dialogue.sort_items_by_text()
 
@@ -160,7 +187,7 @@ func on_dialogue_list_item_clicked(index, at_position, mouse_button_index):
 		print("That character ID does not exist in the data dict")
 		return
 	
-	var dialogue_id = list_dialogue.get_item_text(index)
+	var dialogue_id = get_original_dialogue_id_text(list_dialogue.get_item_text(index))
 	
 	if not Data.get_entire_dict(DIALOGUE_DATA_TYPE)[char_id].has(dialogue_id):
 		print("That dialogue ID does not exist in the data dict")
@@ -242,7 +269,6 @@ func on_type_changed(index):
 	else:
 		f_options.get_parent().visible = true
 		f_dialogue.get_parent().visible = false
-
 
 func on_edit_commands_pressed():
 	if f_char_id.text == "":
