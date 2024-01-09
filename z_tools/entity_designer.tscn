@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c40ainbadxewg"]
+[gd_scene load_steps=16 format=3 uid="uid://c40ainbadxewg"]
 
 [ext_resource type="Theme" uid="uid://cjnfw2l6vr8ob" path="res://resources/themes/default_font_tools.tres" id="1_5m5wi"]
 [ext_resource type="Texture2D" uid="uid://fdgp0j4dwc17" path="res://art/ui/UI Window C.png" id="1_360lq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://z_tools/dialogue.gd" id="11_d58dd"]
 [ext_resource type="Script" path="res://z_tools/popups/command_editor.gd" id="12_dar82"]
 [ext_resource type="Theme" uid="uid://b3ohyqv6y6nwv" path="res://resources/themes/popup.tres" id="12_nmyyw"]
+[ext_resource type="Script" path="res://z_tools/popups/reqs_editor.gd" id="14_oau82"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wch6e"]
 
@@ -344,7 +345,7 @@ size = Vector2i(800, 500)
 visible = true
 borderless = false
 theme = ExtResource("12_nmyyw")
-script = ExtResource("12_dar82")
+script = ExtResource("14_oau82")
 
 [node name="H" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor"]
 offset_left = 12.0
@@ -755,7 +756,7 @@ theme_override_constants/margin_right = 24
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_update_pressed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor/H/Right/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/CommandEditor" method="on_delete_pressed"]
 [connection signal="popup_hide" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="_on_popup_hide"]
-[connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Reqs" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_command_item_selected"]
+[connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Reqs" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_reqs_item_selected"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons/Add" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_add_pressed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons/Update" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_update_pressed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Buttons/Delete" to="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor" method="on_delete_pressed"]
@@ -763,3 +764,6 @@ theme_override_constants/margin_right = 24
 [connection signal="item_clicked" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Searches/DialogueSearch/Filter/DialogueList" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_dialogue_list_item_clicked"]
 [connection signal="item_selected" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Type/Type" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_type_changed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Commands/H/Edit" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_edit_commands_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Reqs/H/Edit" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_edit_reqs_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Dialogue/H/Edit" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_edit_dialogue_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/TabContainer/Dialogue/H/Fields/Options/H/Edit" to="NinePatchRect/MarginContainer/TabContainer/Dialogue" method="on_edit_options_pressed"]

@@ -282,3 +282,15 @@ func on_edit_commands_pressed():
 		return
 		
 	$CommandEditor.open(commands)
+
+func on_edit_reqs_pressed():
+	if f_char_id.text == "":
+		return
+		
+	$ReqsEditor.open(reqs)
+
+func on_edit_dialogue_pressed():
+	pass # Replace with function body.
+
+func on_edit_options_pressed():
+	pass # Replace with function body.
