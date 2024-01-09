@@ -1,6 +1,8 @@
 extends PopupPanel
 
-@onready var f_req = $H/Right/Fields/Req/Req
+@onready var f_fact = $H/Right/Fields/Fact/Fact
+@onready var f_operator = $H/Right/Fields/Operator/Operator
+@onready var f_value = $H/Right/Fields/Value/Value
 @onready var list_reqs = $H/Reqs
 
 var reqs = []
@@ -13,7 +15,7 @@ func open(reqs: Array):
 	selected_index = -1
 	
 	for index in range(0, reqs.size()):
-		list_reqs.add_item(reqs[index])
+		list_reqs.add_item(reqs[index]["fact"])
 	
 	popup_centered_ratio(0.8)
 
@@ -23,24 +25,45 @@ func on_reqs_item_selected(index):
 	if req == null or req == "":
 		print("That req doesn't exist in the list")
 		return
+	
+	var dict = reqs[index]
+	
+	f_fact.text = dict["fact"]
+	f_value.text = dict["value"]
+	
+	for i in range(0, f_operator.item_count):
+		var item_text = f_operator.get_item_text(i)
 		
-	f_req.text = req
+		if dict["operator"] == item_text:
+			f_operator.select(i)
+	
 	selected_index = index
 
 func on_add_pressed():
-	var new_req = f_req.text
-	
-	if new_req == "":
-		print("The req field cannot be empty")
+	if f_fact == "":
+		print("The fact field cannot be empty")
 		return
-		
+	if f_value == "":
+		print("The value field cannot be empty")
+		return
+	
+	var dict = {}
+	
+	dict["fact"] = f_fact.text
+	dict["operator"] = f_operator.get_item_text(f_operator.get_selected_id())
+	dict["value"] = f_value.text
+	
 	for index in range(0, reqs.size()):
-		if new_req == reqs[index]:
-			print("There is already a req with that exact value")
+		var compare_dict = reqs[index]
+		
+		if compare_dict["fact"] == dict["fact"] \
+		and compare_dict["operator"] == dict["operator"] \
+		and compare_dict["value"] == dict["value"]:
+			print("There is already a req with those exact values")
 			return
 			
-	reqs.append(new_req)
-	list_reqs.add_item(new_req)
+	reqs.append(dict)
+	list_reqs.add_item(dict["fact"])
 	
 	selected_index = list_reqs.item_count - 1
 

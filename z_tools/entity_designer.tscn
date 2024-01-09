@@ -374,17 +374,17 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Req" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields"]
+[node name="Fact" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Req"]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Fact"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Req *"
+text = "Fact *"
 horizontal_alignment = 2
 
-[node name="Req" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Req"]
+[node name="Fact" type="LineEdit" parent="NinePatchRect/MarginContainer/TabContainer/Dialogue/ReqsEditor/H/Right/Fields/Fact"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
