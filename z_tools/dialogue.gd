@@ -86,8 +86,15 @@ func validate() -> bool:
 		alert_message = "The 'Character ID' field cannot be blank"
 	elif f_dialogue_id.text == "":
 		alert_message = "The 'Dialogue ID' field cannot be blank"
-	#TODO: Need to check that dialogue or options aren't blank based on the type
-
+	
+	#Check that dialogue or options aren't blank based on the type
+	if f_type.get_selected_id() == DIALOGUE_TYPE.NORMAL:
+		if dialogue.is_empty():
+			alert_message = "There must be some dialogue lines"
+	elif f_type.get_selected_id() == DIALOGUE_TYPE.OPTIONS:
+		if options.is_empty():
+			alert_message = "There must be some given options"
+	
 	if alert_message != "":
 		print(alert_message)
 		return false
